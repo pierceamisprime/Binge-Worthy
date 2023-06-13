@@ -3,6 +3,20 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
+
+follows = db.Table(
+    'follows',
+    db.Model.metadata,
+    db.Column('id', db.Integer, primary_key=True),
+    db.Column('user_is', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'))),
+    db.Column('following', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'))),
+
+    db.UniqueConstraint('user_is', 'following')
+)
+if environment == "production":
+    follows.schema = SCHEMA
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -10,9 +24,20 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    profile_pic = db.Column(db.String(2000))
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    posts = db.relationship('Post', back_populates='user')
+    review = db.relationship('Review', back_populates='user')
+
+    following = db.relationship('User', secondary='follows',
+                                primaryjoin=follows.c.user_is == id,
+                                secondaryjoin=follows.c.following == id,
+                                backref='friends')
 
     @property
     def password(self):
@@ -29,5 +54,9 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'profile_pic': self.profile_pic,
+            'is_following': {}
         }

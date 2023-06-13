@@ -16,12 +16,15 @@ class Post(db.Model):
     owner_review = db.Column(db.String(500), nullable=False)
     owner_rating = db.Column(db.Integer, nullable=False)
     watching_on = db.Column(db.String(55))
-    post_img = db.Column(db.String9(500))
+    post_img = db.Column(db.String(500))
     created_at = db.Column(db.Date(), nullable=False)
 
+    category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('categories.id')), nullable=False)
     category = db.relationship('Category', back_populates='posts')
+
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     user = db.relationship('User', back_populates='posts')
+
     review = db.relationship('Review', back_populates='posts')
 
     def __repr__(self):
@@ -35,10 +38,10 @@ class Post(db.Model):
             'owner_rating': self.owner_rating,
             'watching_on': self.watching_on,
             'post_img': self.post_img,
-            'category': {
-                'id': self.category.id,
-                'type': self.category.type
-            }
+            # 'category': {
+            #     'id': self.category.id,
+            #     'type': self.category.type
+            # },
             'user': {
                 'id': self.user.id,
                 'username': self.user.username,
@@ -51,7 +54,7 @@ class Post(db.Model):
 
 
 class Category(db.Model):
-     __tablename__ = 'category'
+    __tablename__ = 'categories'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -72,20 +75,23 @@ class Category(db.Model):
         }
 
 class Review(db.Model):
-    __tablename__ = 'review'
+    __tablename__ = 'reviews'
 
-     if environment == "production":
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-     id = db.Column(db.Integer, primary_key=True)
-     review_body = db.Column(db.String(500), nullable=False)
-     rating = db.Column(db.Integer, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    review_body = db.Column(db.String(500), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.Date(), nullable=False)
 
-     posts = db.relationship('Post', back_populates='review')
-     user = db.relationship('User', back_populates='review')
-     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    posts = db.relationship('Post', back_populates='review')
+    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
 
-     def __repr__(self):
+    user = db.relationship('User', back_populates='review')
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+
+    def __repr__(self):
         return f'<User {self.user_id} made review {self.id} on post {self.posts.id}'
 
     def to_dict(self):

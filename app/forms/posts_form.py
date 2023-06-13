@@ -19,10 +19,10 @@ def rating_length(form, field):
         raise ValidationError('Rating must be between 1 and 10')
 
 class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired], review_length)
+    title = StringField('Title', validators=[DataRequired(), review_length])
     owner_review = TextAreaField("Review",validators=[DataRequired(), title_length])
-    owner_rating = IntegerField('Rating', validators=[DataRequired], rating_length)
+    owner_rating = IntegerField('Rating', validators=[DataRequired(), rating_length])
     watching_on = SelectField('Watching On', choices=[('Other'), ('Disney+'), ('Netflix'), ('Hulu'), ('Amazon Prime Video'), ('Max'), ('Apple TV'), ('YouTube TV'), ('Paramount+')], validators=[DataRequired()])
-    post_img = URL('Image', validators=[DataRequired])
+    post_img = URL('Image')
     created_at = DateField("Date")
     submit = SubmitField("Submit")

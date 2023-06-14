@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { allPostsThunk } from "../../store/posts"
+import EditDeleteDrop from "./EditDeleteDropMenu"
 import './LandingPage.css'
 
 
@@ -26,6 +27,13 @@ const LandingPage = () => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
                     <div key={post.id}>
+                        <div className="manage-buttons">
+                            {isCurrentUser && (
+                                <EditDeleteDrop user={user} postId={post.id}
+                                />
+                            )}
+
+                        </div>
                         <img className="lp-images" src={post.post_img}></img>
                        <span>
                         Title: {post.title}

@@ -26,7 +26,7 @@ def all_posts():
 
     posts = Post.query.order_by(Post.created_at.desc()).all()
 
-    print('posts =========>', posts)
+    # print('posts =========>', posts)
 
     post_list = [post.to_dict() for post in posts]
 
@@ -72,6 +72,33 @@ def create_post():
         db.session.add(result)
         db.session.commit()
         return {'resPost': result.to_dict()}
+
+    if form.errors:
+        print('errors =======================>', form.errors)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@posts.route("/<int:id>/update", methods=["PUT"])
+@login_required
+def update_post(id):
+
+    form = PostForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+
+    if form.validate_on_submit():
+        post = Post.query.get(id)
+        print('post============================>', post)
+
+        post.title = form.data['title']
+        post.owner_review = form.data['owner_review']
+        post.owner_rating = form.data['owner_rating']
+        post.watching_on = form.data['watching_on']
+        post.post_img = form.data['post_img']
+        post.category = form.data['category']
+        post.created_at = date.today()
+
+        db.session.commit()
+        return {'resPost': post.to_dict()}
 
     if form.errors:
         print('errors =======================>', form.errors)

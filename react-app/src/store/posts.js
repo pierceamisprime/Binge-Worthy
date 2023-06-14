@@ -1,5 +1,7 @@
 const ALL_POSTS = 'posts/ALL_POSTS';
 const CREATE_POST = 'posts/CREATE_POST';
+const EDIT_POST = 'posts/EDIT_POST';
+const DELETE_POST = 'posts/DELETE_POST'
 
 const allPosts = (posts) => ({
     type: ALL_POSTS,
@@ -9,6 +11,16 @@ const allPosts = (posts) => ({
 const createPost = (post) => ({
     type: CREATE_POST,
     post
+})
+
+const editPost = (post) => ({
+    type: EDIT_POST,
+    post
+})
+
+const deletePost = (postId) => ({
+    type: DELETE_POST,
+    postId
 })
 
 export const allPostsThunk = () => async (dispatch) => {
@@ -43,6 +55,33 @@ export const createPostThunk = (post) => async (dispatch) => {
     }
 }
 
+export const editPostThunk = (postId, post) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${postId}/update`, {
+        method: 'PUT',
+        body: post
+    })
+    if (response.ok) {
+        const { resPost } = await response.json()
+        dispatch(editPost(resPost))
+        return resPost
+    } else {
+        const data = await response.json();
+        if (data.errors) {
+            return data
+        }
+    }
+}
+
+export const deletePostThunk = (postId) => async (dispatch) => {
+    const response = await fetch(`api/posts/${postId}/delete`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        dispatch(deletePost(postId))
+    }
+}
+
+
 const initialState = {}
 
 export default function postsReducer(state = initialState, action) {
@@ -55,6 +94,12 @@ export default function postsReducer(state = initialState, action) {
             newState = { ...state };
             newState[action.post.id] = action.post
             return newState
+        case EDIT_POST:
+            newState = { ...state }
+            newState[action.post.id] = action.post
+        case DELETE_POST:
+            newState = { ...state }
+            delete newState[action.postId]
         default:
         return state;
 

@@ -38,6 +38,7 @@ class Post(db.Model):
             'owner_rating': self.owner_rating,
             'watching_on': self.watching_on,
             'post_img': self.post_img,
+            'category_id': self.category_id,
             # 'category': {
             #     'id': self.category.id,
             #     'type': self.category.type

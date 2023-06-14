@@ -1,7 +1,7 @@
 """Initial Migration
 
 Revision ID: 102aeb9dc658
-Revises: 
+Revises:
 Create Date: 2023-06-13 16:17:15.428512
 
 """
@@ -23,6 +23,11 @@ def upgrade():
     sa.Column('type', sa.String(length=55), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+
+     if environment == "production":
+        op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
+
+
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(length=50), nullable=False),
@@ -35,6 +40,12 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
+     if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
+
+
     op.create_table('follows',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_is', sa.Integer(), nullable=True),
@@ -44,6 +55,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('user_is', 'following')
     )
+
+     if environment == "production":
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
+
+
+
+
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=55), nullable=False),
@@ -58,6 +76,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+     if environment == "production":
+        op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
+
+
+
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('review_body', sa.String(length=500), nullable=False),
@@ -69,6 +93,10 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+
+
+     if environment == "production":
+        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

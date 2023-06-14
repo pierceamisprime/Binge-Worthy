@@ -28,5 +28,12 @@ def all_posts():
 
     print('posts =========>', posts)
 
-    for post in posts:
-        return post.to_dict()
+    post_list = [post.to_dict() for post in posts]
+
+    res = {}
+
+    for post in post_list:
+        post_id = post['id']
+        res[post_id] = post
+
+    return res

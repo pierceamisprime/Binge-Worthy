@@ -1,20 +1,16 @@
-"""Initial Migration
+"""initial migration
 
-Revision ID: 102aeb9dc658
+Revision ID: febec1670750
 Revises:
-Create Date: 2023-06-13 16:17:15.428512
+Create Date: 2023-06-14 14:38:46.497031
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = '102aeb9dc658'
+revision = 'febec1670750'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,7 +26,6 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
-
 
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -48,8 +43,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
-
-
     op.create_table('follows',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_is', sa.Integer(), nullable=True),
@@ -63,28 +56,22 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
 
-
-
-
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=55), nullable=False),
     sa.Column('owner_review', sa.String(length=500), nullable=False),
     sa.Column('owner_rating', sa.Integer(), nullable=False),
     sa.Column('watching_on', sa.String(length=55), nullable=True),
+    sa.Column('category', sa.String(length=55), nullable=True),
     sa.Column('post_img', sa.String(length=500), nullable=True),
     sa.Column('created_at', sa.Date(), nullable=False),
-    sa.Column('category_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
 
     if environment == "production":
         op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
-
-
 
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -97,7 +84,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###

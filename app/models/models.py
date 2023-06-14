@@ -16,11 +16,12 @@ class Post(db.Model):
     owner_review = db.Column(db.String(500), nullable=False)
     owner_rating = db.Column(db.Integer, nullable=False)
     watching_on = db.Column(db.String(55))
+    category = db.Column(db.String(55))
     post_img = db.Column(db.String(500))
     created_at = db.Column(db.Date(), nullable=False)
 
-    category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('categories.id')), nullable=False)
-    category = db.relationship('Category', back_populates='posts')
+    # category_type = db.Column(db.String(55), db.ForeignKey(add_prefix_for_prod('categories.type')), nullable=False)
+    # category = db.relationship('Category', back_populates='posts')
 
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     user = db.relationship('User', back_populates='posts')
@@ -38,7 +39,7 @@ class Post(db.Model):
             'owner_rating': self.owner_rating,
             'watching_on': self.watching_on,
             'post_img': self.post_img,
-            'category_id': self.category_id,
+            'category': self.category,
             # 'category': {
             #     'id': self.category.id,
             #     'type': self.category.type
@@ -63,7 +64,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(55), nullable=False)
 
-    posts = db.relationship('Post', back_populates='category')
+    # posts = db.relationship('Post', back_populates='category')
 
     def __repr__(self):
         return f'<Post {self.posts.id} is under category {self.type}'

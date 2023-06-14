@@ -38,6 +38,9 @@ const LandingPage = () => {
                         <span>
                         Watching On: {post.watching_on}
                         </span>
+                        <span>
+                        Category: {post.category}
+                        </span>
                     </div>
                 )
             })}

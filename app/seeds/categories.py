@@ -17,12 +17,16 @@ def seed_categories():
     Science_fiction = Category(
         type='Science-fiction'
     )
+    Fantasy = Category(
+        type='Fantasy'
+    )
 
     db.session.add(Action_Adventure)
     db.session.add(Comedy)
     db.session.add(Horror)
     db.session.add(Drama)
     db.session.add(Science_fiction)
+    db.session.add(Fantasy)
     db.session.commit()
 
 def undo_categories():

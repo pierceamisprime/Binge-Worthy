@@ -23,6 +23,7 @@ def seed_categories():
     db.session.add(Horror)
     db.session.add(Drama)
     db.session.add(Science_fiction)
+    db.session.commit()
 
 def undo_categories():
     if environment == "production":

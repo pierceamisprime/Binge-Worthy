@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import OpenModalButton from '../OpenModalButton';
+import CreatePostModal from './CreatePostModal';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -18,8 +20,10 @@ function Navigation({ isLoaded }){
 				</li>
 			)}
 			<li>
-			{/* <i class="fa-solid fa-square-plus" style={{color: "#4dffd2",}}></i> */}
-			<i class="fa-solid fa-square-plus" style={{color: "#4dffd2",}}></i>
+				<OpenModalButton
+				buttonText={<i class="fa-solid fa-square-plus" style={{color: "#4dffd2"}}></i>}
+				modalComponent={<CreatePostModal />}
+				/>
 			</li>
 		</ul>
 	);

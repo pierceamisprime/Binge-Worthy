@@ -17,6 +17,10 @@ function Navigation({ isLoaded }){
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
+			<li>
+			{/* <i class="fa-solid fa-square-plus" style={{color: "#4dffd2",}}></i> */}
+			<i class="fa-solid fa-square-plus" style={{color: "#4dffd2",}}></i>
+			</li>
 		</ul>
 	);
 }

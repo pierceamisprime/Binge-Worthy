@@ -6,7 +6,7 @@ import './LandingPage.css'
 
 const LandingPage = () => {
     const dispatch = useDispatch()
-
+    const user = useSelector(state => state.session.user)
     const posts = Object.values(useSelector(state => state.posts))
 
 
@@ -23,6 +23,7 @@ const LandingPage = () => {
 
         <div>
             {posts.toReversed().map(post => {
+                const isCurrentUser = post.user.id === user.id;
                 return (
                     <div key={post.id}>
                         <img className="lp-images" src={post.post_img}></img>

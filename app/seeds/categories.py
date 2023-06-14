@@ -27,8 +27,8 @@ def seed_categories():
 
 def undo_categories():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.category RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.categories RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM category"))
+        db.session.execute(text("DELETE FROM categories"))
 
     db.session.commit()

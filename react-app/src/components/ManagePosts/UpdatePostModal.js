@@ -2,20 +2,23 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { getAllCategoriesThunk } from "../../store/categories"
-import { allPostsThunk, createPostThunk } from "../../store/posts"
+import { allPostsThunk, editPostThunk } from "../../store/posts"
 
 
-const CreatePostModal = () => {
+const UpdatePostModal = ({ postId }) => {
     const dispatch = useDispatch()
     const { closeModal } = useModal()
     const categories = Object.values(useSelector(state => state.categories))
+    const currentPost = useSelector(state => state.posts[postId])
+    console.log('currentpost===========', currentPost)
+    console.log('postid===========', postId)
 
-    const [title, setTitle] = useState('')
-    const [ownerReview, setOwnerReview] = useState('')
-    const [ownerRating, setOwnerRating] = useState('')
-    const [watchingOn, setWatchingOn] = useState('')
-    const [postImg, setPostImg] = useState('')
-    const [category, setCategory] = useState(0)
+    const [title, setTitle] = useState(currentPost?.title)
+    const [ownerReview, setOwnerReview] = useState(currentPost?.owner_review)
+    const [ownerRating, setOwnerRating] = useState(currentPost?.owner_rating)
+    const [watchingOn, setWatchingOn] = useState(currentPost?.watching_on)
+    const [postImg, setPostImg] = useState(currentPost?.post_img)
+    const [category, setCategory] = useState(currentPost?.category)
     const [errors, setErrors] = useState([])
     const [submitted, setSubmitted] = useState('')
 
@@ -35,6 +38,7 @@ const CreatePostModal = () => {
         setErrors(errors)
     }, [title, ownerReview, ownerRating, watchingOn, postImg, category])
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setSubmitted(true)
@@ -50,12 +54,10 @@ const CreatePostModal = () => {
         console.log(category)
         console.log(ownerReview)
 
-        if (!Object.values(errors).lenth) {
-           await dispatch(createPostThunk(formData))
-           closeModal()
-
+        if (!Object.values(errors).length) {
+            await dispatch(editPostThunk(postId, formData)).then(() => dispatch(allPostsThunk()))
+            closeModal()
         }
-
 
         // if (data.errors) {
         //     return setErrors(data.errors[0])
@@ -70,7 +72,7 @@ const CreatePostModal = () => {
 
     return (
         <div className="create-post-modal-container">
-            <h1>New Post</h1>
+            <h1>Edit Post</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     {errors.title && submitted && <p style={{ color: 'red '}}>{errors.title}</p>}
@@ -150,4 +152,4 @@ const CreatePostModal = () => {
     )
 }
 
-export default CreatePostModal
+export default UpdatePostModal

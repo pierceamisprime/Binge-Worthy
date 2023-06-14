@@ -19,3 +19,17 @@ export const allPostsThunk = () => async (dispatch) => {
         }
     }
 }
+
+const initialState = {}
+
+export default function postsReducer(state = initialState, action) {
+    let newState;
+    switch (action.type) {
+        case ALL_POSTS:
+            newState = { ...action.posts }
+            return newState
+        default:
+        return state;
+
+    }
+}

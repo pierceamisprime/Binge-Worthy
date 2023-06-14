@@ -1,6 +1,6 @@
 """Initial Migration
 
-Revision ID: ffdc0a98111c
+Revision ID: 102aeb9dc658
 Revises:
 Create Date: 2023-06-13 16:17:15.428512
 
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = '102aeb9dc658'
 down_revision = None
 branch_labels = None
 depends_on = None

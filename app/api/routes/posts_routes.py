@@ -48,7 +48,7 @@ def delete_post(id):
     return {'message': 'Successfully deleted'}
 
 
-@posts.route('/create', methods=['POST'])
+@posts.route('', methods=['POST'])
 # @login_required
 def create_post():
 
@@ -58,19 +58,21 @@ def create_post():
 
     if form.validate_on_submit():
         selected_user = User.query.get(current_user.id)
-
+        # print('formdata========', form.data['category_type'])
         result = Post(
             title = form.data['title'],
             owner_review = form.data['owner_review'],
             owner_rating = form.data['owner_rating'],
             watching_on = form.data['watching_on'],
             post_img = form.data['post_img'],
-            user = selected_user
+            user = selected_user,
+            category = form.data['category'],
+            created_at = date.today()
         )
         db.session.add(result)
         db.session.commit()
         return {'resPost': result.to_dict()}
 
     if form.errors:
+        print('errors =======================>', form.errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-    return 'hello'

@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 import { allPostsThunk } from "../../store/posts"
 import EditDeleteDrop from "./EditDeleteDropMenu"
 import './LandingPage.css'
@@ -11,10 +12,12 @@ const LandingPage = () => {
     const posts = Object.values(useSelector(state => state.posts))
 
 
+
     useEffect(() => {
         dispatch(allPostsThunk())
     }, [dispatch])
 
+    if (!user) return <Redirect to="/" />;
 
 
 

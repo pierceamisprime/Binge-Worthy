@@ -14,7 +14,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(55), nullable=False)
     owner_review = db.Column(db.String(500), nullable=False)
-    owner_rating = db.Column(db.Integer, nullable=False)
+    owner_rating = db.Column(db.Float, nullable=False)
     watching_on = db.Column(db.String(55))
     category = db.Column(db.String(55))
     post_img = db.Column(db.String(500))

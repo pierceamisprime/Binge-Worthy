@@ -19,7 +19,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path='/'>
+          <Route path='/posts'>
             <LandingPage />
           </Route>
           <Route path="/login" >

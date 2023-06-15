@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import WelcomePage from "./components/WelcomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route path='/posts'>
             <LandingPage />
+          </Route>
+          <Route path='/welcome'>
+            <WelcomePage />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

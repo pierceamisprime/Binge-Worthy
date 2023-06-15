@@ -1,0 +1,14 @@
+.create-post-modal-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.create-post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-post-form > * {
+    padding: 12px;
+}

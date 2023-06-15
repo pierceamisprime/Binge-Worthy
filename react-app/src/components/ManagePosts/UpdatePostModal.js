@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { getAllCategoriesThunk } from "../../store/categories"
 import { allPostsThunk, editPostThunk } from "../../store/posts"
-
+import '../Navigation/CreatePostModal.css'
 
 const UpdatePostModal = ({ postId }) => {
     const dispatch = useDispatch()
@@ -73,7 +73,7 @@ const UpdatePostModal = ({ postId }) => {
     return (
         <div className="create-post-modal-container">
             <h1>Edit Post</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="create-post-form" onSubmit={handleSubmit}>
                 <label>
                     {errors.title && submitted && <p style={{ color: 'red '}}>{errors.title}</p>}
                     <input

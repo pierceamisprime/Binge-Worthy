@@ -2,3 +2,15 @@
     width: 200px;
     height: 200px;
 }
+
+.lp-posts-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+.lp-posts-container > * {
+    display: flex;
+    flex-direction: column;
+}

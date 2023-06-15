@@ -1,8 +1,8 @@
-"""initial migration
+"""migrate
 
-Revision ID: febec1670750
+Revision ID: 0cd77fb5b126
 Revises:
-Create Date: 2023-06-14 14:38:46.497031
+Create Date: 2023-06-14 19:23:31.120256
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = 'febec1670750'
+revision = '0cd77fb5b126'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,10 +27,8 @@ def upgrade():
     sa.Column('type', sa.String(length=55), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
-
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(length=50), nullable=False),
@@ -42,10 +41,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
     op.create_table('follows',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_is', sa.Integer(), nullable=True),
@@ -55,15 +52,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('user_is', 'following')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
-
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=55), nullable=False),
     sa.Column('owner_review', sa.String(length=500), nullable=False),
-    sa.Column('owner_rating', sa.Integer(), nullable=False),
+    sa.Column('owner_rating', sa.Float(), nullable=False),
     sa.Column('watching_on', sa.String(length=55), nullable=True),
     sa.Column('category', sa.String(length=55), nullable=True),
     sa.Column('post_img', sa.String(length=500), nullable=True),
@@ -72,10 +67,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE posts SET SCHEMA {SCHEMA};")
-
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('review_body', sa.String(length=500), nullable=False),

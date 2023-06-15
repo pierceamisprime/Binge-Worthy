@@ -25,7 +25,7 @@ const LandingPage = () => {
 
     return (
 
-        <div>
+        <div className="lp-posts-container">
             {posts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (

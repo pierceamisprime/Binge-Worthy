@@ -5,9 +5,9 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import './Navigation.css';
 
 function ProfileButton({ user }) {
-   const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
@@ -33,7 +33,6 @@ function ProfileButton({ user }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    <Redirect to="/" />;
     dispatch(logout());
   };
 

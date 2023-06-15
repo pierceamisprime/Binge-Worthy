@@ -17,21 +17,27 @@ function Navigation({ isLoaded }){
 	}, [dispatch])
 
 	return (
-		<ul>
+		<ul className='nav-bar-container'>
 			<li>
 				<NavLink exact to={sessionUser ? '/posts' : '/'}>Home</NavLink>
+			</li>
+			<li className='nav-function-buttons'>
+			<li>
+				{sessionUser &&
+				<OpenModalButton
+				buttonText={<i class="fa-solid fa-square-plus" style={{color: "#4dffd2"}}></i>}
+				modalComponent={<CreatePostModal categories={categories} />}
+				/>
+
+				}
+			</li>
+
 			</li>
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
-			<li>
-				<OpenModalButton
-				buttonText={<i class="fa-solid fa-square-plus" style={{color: "#4dffd2"}}></i>}
-				modalComponent={<CreatePostModal categories={categories} />}
-				/>
-			</li>
 		</ul>
 	);
 }

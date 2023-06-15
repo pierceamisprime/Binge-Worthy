@@ -50,8 +50,8 @@ const CreatePostModal = () => {
         console.log(category)
         console.log(ownerReview)
 
-        if (!Object.values(errors).lenth) {
-           await dispatch(createPostThunk(formData))
+        if (!Object.values(errors).length) {
+           await dispatch(createPostThunk(formData)).then(() => allPostsThunk())
            closeModal()
 
         }

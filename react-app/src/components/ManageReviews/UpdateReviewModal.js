@@ -38,7 +38,7 @@ const UpdateReviewModal = ({ reviewId, postId }) => {
 
         if (!Object.values(errors).length) {
             console.log('hellooooo')
-            await dispatch(editReviewThunk(postId, formData)).then(() => dispatch(allReviewsThunk()))
+            await dispatch(editReviewThunk(reviewId, formData)).then(() => dispatch(allReviewsThunk()))
             closeModal()
         }
     }

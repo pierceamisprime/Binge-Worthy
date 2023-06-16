@@ -97,11 +97,13 @@ export default function postsReducer(state = initialState, action) {
         case EDIT_POST:
             newState = { ...state }
             newState[action.post.id] = action.post
+            return newState
         case DELETE_POST:
             newState = { ...state }
             delete newState[action.postId]
+            return newState
         default:
-        return state;
+            return state;
 
     }
 }

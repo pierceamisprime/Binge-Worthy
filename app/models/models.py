@@ -26,7 +26,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     user = db.relationship('User', back_populates='posts')
 
-    review = db.relationship('Review', back_populates='posts')
+    review = db.relationship('Review', back_populates='posts', cascade='all, delete-orphan')
 
     def __repr__(self):
         return f'<User {self.user_id}, {self.user.username}, just posted! Post #{self.id}>'
@@ -101,4 +101,13 @@ class Review(db.Model):
             'id': self.id,
             'review_body': self.review_body,
             'rating': self.rating,
+            'post_id': self.post_id,
+            'user': {
+                'id': self.user.id,
+                'username': self.user.username,
+                'first_name': self.user.first_name,
+                'last_name': self.user.last_name,
+                'email': self.user.email,
+                'profile-pic': self.user.profile_pic
+            }
         }

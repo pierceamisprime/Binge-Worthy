@@ -2,9 +2,10 @@ from flask import Blueprint, flash,request
 from flask_login import login_required, current_user
 from datetime import date
 from ...models.db import db
-from ...models.models import Post
+from ...models.models import Post, Review
 from ...models.user import User
 from ...forms.posts_form import PostForm
+from ...forms.review_form import ReviewForm
 
 
 posts = Blueprint("posts", __name__)
@@ -40,7 +41,7 @@ def all_posts():
 
 
 @posts.route("/<int:id>/delete", methods=["DELETE"])
-# @login_required
+@login_required
 def delete_post(id):
     post_to_delete = Post.query.get(id)
     db.session.delete(post_to_delete)
@@ -49,7 +50,7 @@ def delete_post(id):
 
 
 @posts.route('', methods=['POST'])
-# @login_required
+@login_required
 def create_post():
 
     form = PostForm()
@@ -99,6 +100,33 @@ def update_post(id):
 
         db.session.commit()
         return {'resPost': post.to_dict()}
+
+    if form.errors:
+        print('errors =======================>', form.errors)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@posts.route("/<int:id>/reviews", methods=["POST"])
+@login_required
+def create_review(id):
+
+    form = ReviewForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        selected_user = User.query.get(current_user.id)
+
+        result = Review(
+            review_body = form.data['review_body'],
+            rating = form.data['rating'],
+            created_at = date.today(),
+            post_id = id,
+            user = selected_user
+        )
+        db.session.add(result)
+        db.session.commit()
+        return {'resReview': result.to_dict()}
 
     if form.errors:
         print('errors =======================>', form.errors)

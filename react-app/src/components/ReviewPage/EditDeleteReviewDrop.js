@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import DeletePostModal from "../ManagePosts/DeletePosts";
-import UpdatePostModal from "../ManagePosts/UpdatePostModal";
+import DeleteReviewModal from "../ManageReviews/DeleteReviewModal";
+import UpdateReviewModal from "../ManageReviews/UpdateReviewModal";
 import OpenModalButton from "../OpenModalButton";
 
-function EditDeleteDrop({ user, postId }) {
+function EditDeleteReviewDrop({ user, reviewId, postId }) {
 
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -45,14 +45,14 @@ function EditDeleteDrop({ user, postId }) {
                             {console.log("I am in here")}
                             <OpenModalButton
                                 buttonText="Edit"
-                                modalComponent={<UpdatePostModal postId={postId} />}
+                                modalComponent={<UpdateReviewModal reviewId={reviewId} postId={postId} />}
                             />
                         </div>
                         <div className="delete-drop">
                             <OpenModalButton
 
                                 buttonText="Delete"
-                                modalComponent={<DeletePostModal postId={postId} />}
+                                modalComponent={<DeleteReviewModal reviewId={reviewId} postId={postId} />}
                             />
                         </div>
                     </div>
@@ -62,4 +62,4 @@ function EditDeleteDrop({ user, postId }) {
     );
 }
 
-export default EditDeleteDrop;
+export default EditDeleteReviewDrop;

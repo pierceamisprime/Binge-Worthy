@@ -14,5 +14,5 @@ def rating_length(form, field):
         raise ValidationError('Rating must be between 1 and 10')
 
 class ReviewForm(FlaskForm):
-    review = StringField('Review', validators=[DataRequired(), review_length])
+    review_body = StringField('Review', validators=[DataRequired(), review_length])
     rating = IntegerField('Rating', validators=[DataRequired(), rating_length])

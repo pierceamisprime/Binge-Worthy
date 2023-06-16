@@ -1,12 +1,10 @@
 const ALL_CATEGORIES = 'categories/ALL_CATEGORIES'
 
-const allCategories = (categories) => {
-    return {
-        type: ALL_CATEGORIES,
-        categories
-    }
+const allCategories = (categories) => ({
+    type: ALL_CATEGORIES,
+    categories
 
-}
+});
 
 export const getAllCategoriesThunk = () => async (dispatch) => {
     const response = await fetch('/api/categories')

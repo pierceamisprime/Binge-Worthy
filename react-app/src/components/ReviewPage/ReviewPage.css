@@ -1,0 +1,23 @@
+.review-page-container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.review-post-recap {
+    display: flex;
+    flex-direction: column;
+}
+
+.other-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.rp-review {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid black;
+}

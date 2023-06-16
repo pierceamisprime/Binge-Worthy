@@ -28,7 +28,7 @@ const CreatePostModal = () => {
         if (ownerReview.length > 500) errors.ownerReview = "Review must be between 1-500 characters"
         if (!ownerRating) errors.ownerRating = "Please provide Rating"
         if (!(+ownerRating)) errors.ownerRating = "Rating must be number!"
-        if (ownerRating < 0 || ownerRating > 10) errors.ownerRating = "Rating must be between 0-10"
+        if (ownerRating < 1 || ownerRating > 10) errors.ownerRating = "Rating must be between 1-10"
         if (!watchingOn) errors.watchingOn = "Please provide streaming service"
         if (!postImg) errors.postImg = "Please provide Image"
         if (!category) errors.category = "Please provide category"
@@ -46,9 +46,9 @@ const CreatePostModal = () => {
         formData.append('watching_on', watchingOn)
         formData.append('post_img', postImg)
         formData.append('category', category)
-        console.log('formData==============',formData)
-        console.log(category)
-        console.log(ownerReview)
+        // console.log('formData==============',formData)
+        // console.log(category)
+        // console.log(ownerReview)
 
         if (!Object.values(errors).length) {
            await dispatch(createPostThunk(formData)).then(() => allPostsThunk())

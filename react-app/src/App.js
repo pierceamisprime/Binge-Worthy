@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import WelcomePage from "./components/WelcomePage";
+import ReviewPage from "./components/ReviewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function App() {
           <Route exact path='/'>
             <WelcomePage />
           </Route>
-          <Route path='/posts'>
+          <Route exact path='/posts'>
             <LandingPage />
           </Route>
           <Route path="/login" >
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/posts/:postId/reviews'>
+            <ReviewPage/>
           </Route>
         </Switch>
       )}

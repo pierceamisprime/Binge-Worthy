@@ -12,9 +12,10 @@ import './ReviewPage.css'
 const ReviewPage = () => {
     const dispatch = useDispatch()
     const { postId } = useParams()
-    const post = useSelector(state => state.posts[postId])
+    const posts = useSelector(state => state.posts)
+    const post = posts[postId]
     const reviews = Object.values(useSelector(state => state.reviews))
-    const postsReviews = reviews.filter(review => review.post_id === post.id)
+    const postsReviews = reviews.filter(review => review.post_id === post?.id)
     const user = useSelector(state => state.session.user)
     // const post = posts.filter()
 
@@ -30,20 +31,20 @@ const ReviewPage = () => {
         <div className="review-page-container">
             <div className="review-post-recap">
             <h2 className="review-title">
-                        {post.title}
+                        {post?.title}
                         </h2>
-                        <img className="lp-images" src={post.post_img}></img>
+                        <img className="lp-images" src={post?.post_img}></img>
                         <span>
-                        Review: {post.owner_review}
+                        Review: {post?.owner_review}
                         </span>
                         <span>
-                        Rating: {post.owner_rating}
+                        Rating: {post?.owner_rating}
                         </span>
                         <span>
-                        Watching On: {post.watching_on}
+                        Watching On: {post?.watching_on}
                         </span>
                         <span>
-                        Category: {post.category}
+                        Category: {post?.category}
                         </span>
 
             </div>

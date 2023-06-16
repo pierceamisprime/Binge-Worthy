@@ -56,6 +56,7 @@ export const createReviewThunk = (postId, review) => async (dispatch) => {
 };
 
 export const editReviewThunk = (reviewId, review) => async (dispatch) => {
+    console.log('thunk=====',reviewId)
     const response = await fetch(`/api/reviews/${reviewId}/update`, {
         method: 'PUT',
         body: review
@@ -73,7 +74,7 @@ export const editReviewThunk = (reviewId, review) => async (dispatch) => {
 };
 
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-    const response = await fetch(`api/reviews/${reviewId}/delete`, {
+    const response = await fetch(`/api/reviews/${reviewId}/delete`, {
         method: 'DELETE'
     })
     if (response.ok) {

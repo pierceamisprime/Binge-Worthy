@@ -41,18 +41,18 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="profile-btn" onClick={openMenu}>
+        <i className="fas fa-user-circle fa-2xl" style={{color: "#557e71"}} />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
+          <div className="user-menu">
             <li>{user.username}</li>
-            <li>{user.email}</li>
+            {/* <li>{user.email}</li> */}
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button className="logout-btn" onClick={handleLogout}>Log Out</button>
             </li>
-          </>
+            </div>
         ) : (
           <>
             <OpenModalButton

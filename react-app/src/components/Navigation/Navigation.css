@@ -1,15 +1,39 @@
 .profile-dropdown {
   position: absolute;
   background-color: transparent;
-  right: 30px;
+  right: 10px;
 }
 
 .hidden {
   display: none;
 }
 
+.logout-btn {
+  background-color: #557e71;
+  border: none;
+  border-radius: 25px;
+  width: 125px;
+  height: 35px;
+}
+
+.logout-btn:hover {
+  box-shadow: 2px 2px 2px rgb(78, 78, 78);
+}
+
 li {
   list-style: none;
+}
+
+.bw-logo {
+  width: 100px;
+  height: 40px;
+}
+.profile-btn {
+  background-color: transparent;
+  border-radius: 25px;
+  border-color: #557e71;
+  border-style: none;
+
 }
 
 .nav-bar-container {
@@ -22,8 +46,8 @@ li {
   padding: 10px;
   position: sticky;
   top: 0px;
-
   z-index: 20;
+  box-shadow: 4px 4px 4px rgb(84, 81, 81);
 }
 
 .nav-function-buttons {
@@ -31,4 +55,30 @@ li {
   flex-direction: row;
   justify-content: space-between;
   gap: 5px;
+  background-color: transparent;
+}
+
+.nav-create-btn > button {
+  background-color: transparent;
+  border: none;
+}
+
+.user-menu {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  grid-gap: 5px;
+  grid-gap: 5px;
+  gap: 5px;
+  font-size: 90%;
+  text-align: center;
+  position: relative;
+  top: 10px;
+  right: 1px;
+  width: 130px;
+  padding: 10px;
+  box-shadow: -2px 5px 8px #151616;
+  background-color: white;
+  border-radius: 25px;
+
 }

@@ -19,25 +19,27 @@ function Navigation({ isLoaded }){
 	return (
 		<ul className='nav-bar-container'>
 			<li>
-				<NavLink exact to={sessionUser ? '/posts' : '/'}>Home</NavLink>
+				<NavLink exact to={sessionUser ? '/posts' : '/'}>
+					<img className='bw-logo' src='https://i.imgur.com/squTCxA.png'></img>
+				</NavLink>
 			</li>
 			<li className='nav-function-buttons'>
-			<li>
+			<li className='nav-create-btn'>
 				{sessionUser &&
 				<OpenModalButton
-				buttonText={<i class="fa-solid fa-square-plus" style={{color: "#4dffd2"}}></i>}
+				buttonText={<i class="fa-solid fa-square-plus fa-2xl" style={{color: "#557e71"}}></i>}
 				modalComponent={<CreatePostModal categories={categories} />}
 				/>
 
 				}
 			</li>
 
-			</li>
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
+			</li>
 		</ul>
 	);
 }

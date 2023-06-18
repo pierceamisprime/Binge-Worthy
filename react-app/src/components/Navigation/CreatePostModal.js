@@ -70,7 +70,8 @@ const CreatePostModal = () => {
 
     return (
         <div className="create-post-modal-container">
-            <h1>New Post</h1>
+            <i onClick={() => closeModal()} class="fa-solid fa-xmark fa-lg"></i>
+            <h1>Binge Worthy?</h1>
             <form className="create-post-form" onSubmit={handleSubmit}>
                 <label>
                     {errors.title && submitted && <p style={{ color: 'red '}}>{errors.title}</p>}
@@ -99,6 +100,7 @@ const CreatePostModal = () => {
                         onChange={(e) => setOwnerRating(e.target.value)}
                     />
                 </label>
+                <div className="watching-category">
                 <label>
                     {errors.watchingOn && submitted && <p style={{ color: 'red '}}>{errors.watchingOn}</p>}
                     <select
@@ -107,6 +109,8 @@ const CreatePostModal = () => {
                         value={watchingOn}
                         onChange={(e) => setWatchingOn(e.target.value)}
                     >
+                        <option default>Select Steaming Service</option>
+                         {/* <option value='1' disabled>Select</option> */}
                         <option value="other">Other</option>
                         <option value="Disney+">Disney+</option>
                         <option value="Hulu">Hulu</option>
@@ -125,13 +129,16 @@ const CreatePostModal = () => {
                         type="text"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                    >{categories.map(category => {
+                    >
+                         <option default>Select Category</option>
+                        {categories.map(category => {
                         return (
                             <option key={category.id}>{category.type}</option>
                         )
                     })}
                     </select>
                 </label>
+                </div>
                 <label>
                     {errors.postImg && submitted && <p style={{ color: 'red '}}>{errors.postImg}</p>}
                     <input
@@ -141,8 +148,8 @@ const CreatePostModal = () => {
                         onChange={(e) => setPostImg(e.target.value)}
                     />
                 </label>
-                <div>
-                    <button type="submit">Post</button>
+                <div className="create-post-btn-container">
+                    <button className="create-post-btn" type="submit">Binge</button>
                 </div>
 
             </form>

@@ -6,6 +6,7 @@ import CreateReviewModal from "../ReviewPage/CreateReview.Modal"
 import OpenModalButton from "../OpenModalButton"
 import EditDeleteDrop from "./EditDeleteDropMenu"
 import './LandingPage.css'
+import { getAllCategoriesThunk } from "../../store/categories"
 
 
 const LandingPage = () => {
@@ -18,6 +19,7 @@ const LandingPage = () => {
 
     useEffect(() => {
         dispatch(allPostsThunk())
+        dispatch(getAllCategoriesThunk())
     }, [dispatch])
 
     if (!user) return <Redirect to="/" />;
@@ -34,32 +36,48 @@ const LandingPage = () => {
                 return (
                     <div className="lp-posts" key={post.id}>
                         <div className="manage-buttons">
+                            <span className="lp-user">{post.user.username}</span>
+                            <div className="edit-dl-drop">
                             {isCurrentUser && (
-                                <EditDeleteDrop user={user} postId={post.id}
-                                />
-                            )}
+                                    <EditDeleteDrop user={user} postId={post.id}
+                                    />
+
+                                    )}
+                                    </div>
 
                         </div>
-                        <span>{post.user.username}</span>
+                        <div className="title-rating">
                        <h2 className="lp-title">
                         {post.title}
                         </h2>
+                        <div className="lp-rating-container">
+                        <i class="fa-solid fa-face-smile fa-lg" style={{color: "#557e71"}}></i>
+                        <i class="fa-solid fa-face-meh fa-lg" style={{color: "#557e71"}}></i>
+                        <i class="fa-solid fa-face-frown fa-lg" style={{color: "#557e71"}}></i>
+                        <span id="lp-rating">
+                        {parseFloat(post.owner_rating).toFixed(1)}
+                        </span>
+                        </div>
+                        </div>
+                        <div className="lp-images-container">
                         <img className="lp-images" src={post.post_img}></img>
+
+                        </div>
+                        <div className="lp-review-watching-container">
                         <span id="lp-review">
                         Review: {post.owner_review}
-                        </span>
-                        <span id="lp-rating">
-                        Rating: {post.owner_rating}
                         </span>
                         <span id="lp-watching">
                         Watching On: {post.watching_on}
                         </span>
-                        <span id="lp-category">
+
+                        </div>
+                        {/* <span id="lp-category">
                         Category: {post.category}
-                        </span>
-                        <div>
+                        </span> */}
+                        <div className="lp-other-reviews">
                             {/* <button onClick={history.push(`/posts/${post.id}/reviews`)}>Other Reviews</button> */}
-                            <NavLink to={`/posts/${post.id}/reviews`}>Other Reviews</NavLink>
+                            <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                             {/* <OpenModalButton
                                 buttonText='Leave Review'
                                 modalComponent={CreateReviewModal}

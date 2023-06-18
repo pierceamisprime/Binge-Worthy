@@ -1,26 +1,55 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+link {
+    text-decoration: none;
+}
+
+body {
+    background-color: #557e71;
+}
+
 .post-dropdown {
     position: absolute;
   background-color: transparent;
 
 }
 .lp-images {
-    width: 400px;
-    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
     padding: 20px;
+}
+
+.lp-images-container {
+    display: flex;
+    justify-content: center;
 }
 
 .lp-posts-container {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     gap: 20px;
     padding: 50px;
-    background-color: rgb(173, 249, 224);
+
 }
 
 .lp-posts {
-    background-color: white;
+    background-color: rgb(233, 233, 233);
+}
+
+.lp-posts:hover {
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+    transition: all .4s ease;
+    background-color: #2F2E30;
+    border: none;
+
 }
 
 .lp-posts-container > div {
@@ -28,6 +57,7 @@
     flex-direction: column;
     border: 1px solid white;
     border-radius: 25px;
+    width: 50%;
 
 }
 
@@ -35,4 +65,122 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px;
+}
+
+.title-rating {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+#lp-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.lp-rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.lp-rating-container > i {
+    padding-top: 12px;
+}
+
+.manage-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+
+}
+
+.caret-icon>button {
+    border-radius: 4px;
+    background-color: white;
+    border-style: none;
+    /* border-radius: 5px; */
+    /* border: 1px solid red; */
+}
+
+.lp-review-watching-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.lp-other-reviews {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+}
+
+.lp-other-reviews-link {
+    color: #557e71;
+    font-size: 12px;
+
+}
+.lp-other-reviews-link:hover {
+    font-weight: bold;
+
+}
+
+#lp-review {
+    font-size: 18px;
+}
+
+#lp-watching {
+    color: #557e71;
+    font-size: 14px;
+}
+
+.lp-user {
+    color: gray;
+}
+
+.edit-delete-post {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-size: 90%;
+    text-align: center;
+    position: relative;
+    top: 5px;
+    right: 15px;
+    background-color: transparent;
+}
+
+.edit-delete-post>div>button {
+    /* border: 1px solid pink; */
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    /* z-index: 20; */
+}
+
+.edit-delete-post>div>button:hover {
+    background-color: #557e71;
+}
+
+.edit-drop {
+    /* border: 1px solid red; */
+    width: 100%;
+
+    border: none;
+}
+
+
+
+.delete-drop {
+    width: 100%;
+
+    border: none;
 }

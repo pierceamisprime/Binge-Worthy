@@ -26,36 +26,52 @@ function LoginFormModal() {
     }
   };
 
+  const demoUser = (e) => {
+    e.preventDefault()
+    return dispatch(login("demo@aa.io", "password")).then(() => closeModal())
+  }
+
+
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="login-modal">
+      <i onClick={() => closeModal()} class="fa-solid fa-xmark fa-lg"></i>
+      <form className="login-modal-container" onSubmit={handleSubmit}>
+      <h1 className="login-title">Log In</h1>
+        <ul className="error-login">
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className="login-errors" key={idx} style={{ color: 'red '}}>{error}</li>
           ))}
         </ul>
         <label>
-          Email
           <input
+          placeholder="Email"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            // required
           />
         </label>
         <label>
-          Password
+
           <input
+          placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            // required
           />
         </label>
-        <button type="submit">Log In</button>
+        <div className="login-btn-container">
+
+        <button className="login-btn" type="submit">Log In</button>
+        </div>
+        <div className="demo-btn-container">
+        <button onClick={demoUser} className="login-btn">Demo User</button>
+
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

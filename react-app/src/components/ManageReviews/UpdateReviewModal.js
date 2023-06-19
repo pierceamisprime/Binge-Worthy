@@ -44,13 +44,14 @@ const UpdateReviewModal = ({ reviewId, postId }) => {
     }
 
     return (
-        <div>
-            <h1>Edit Review</h1>
+        <div className="rv-modal">
+             <i onClick={() => closeModal()} class="fa-solid fa-xmark fa-lg" id="dl-x"></i>
             <form className="create-review-form" onSubmit={handleSubmit}>
+            <h1>Edit Review</h1>
                 <label>
-                {errors.review && submitted && <p style={{ color: 'red '}}>{errors.review}</p>}
+                {errors.review && submitted && <p style={{ color: 'red '}} className='rv-errors'>{errors.review}</p>}
                     <textarea
-                        placeholder="Review"
+                        placeholder="Review..."
                         type='text'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
@@ -58,7 +59,7 @@ const UpdateReviewModal = ({ reviewId, postId }) => {
 
                 </label>
                 <label>
-                {errors.rating && submitted && <p style={{ color: 'red '}}>{errors.rating}</p>}
+                {errors.rating && submitted && <p style={{ color: 'red '}} className='rv-errors'>{errors.rating}</p>}
                     <input
                         placeholder="Rating"
                         type="text"
@@ -66,8 +67,8 @@ const UpdateReviewModal = ({ reviewId, postId }) => {
                         onChange={(e) => setRating(e.target.value)}
                     />
                 </label>
-                <div>
-                    <button type="submit">Edit</button>
+                <div className="create-rv-btn-container">
+                    <button className="create-rv-btn" type="submit">Edit</button>
                 </div>
             </form>
         </div>

@@ -1,0 +1,53 @@
+.login-modal {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 25px;
+}
+.login-modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+}
+
+.login-modal-container > label {
+    padding: 15px;
+}
+
+.login-modal-container > label > input {
+    border-radius: 10px;
+    height: 25px;
+    width: 200px;
+
+}
+
+.login-btn {
+    background-color: #557e71;
+    border: none;
+    border-radius: 25px;
+    width: 175px;
+    height: 35px;
+
+}
+
+.login-btn:hover {
+    box-shadow: 2px 2px 2px rgb(78, 78, 78);
+
+}
+
+.login-btn-container {
+    padding: 20px;
+}
+
+.error-login {
+   padding: 0px;
+}
+
+.login-title {
+    margin-top: 15px;
+    margin-bottom: 0px;
+}

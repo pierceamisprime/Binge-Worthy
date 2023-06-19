@@ -1,0 +1,55 @@
+.rv-modal {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 450px;
+    background-color: white;
+    border-radius: 25px;
+
+}
+
+.create-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-review-form > label {
+    padding: 20px;
+}
+
+.create-review-form > label > textarea {
+    width: 300px;
+    height: 100px;
+    border-radius: 15px;
+}
+
+.create-review-form > label > input {
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+    border-color: rgb(216, 216, 216);
+}
+
+.create-rv-btn {
+    background-color: #557e71;
+    border: none;
+    border-radius: 25px;
+    width: 175px;
+    height: 35px;
+
+}
+
+.create-rv-btn:hover {
+    box-shadow: 2px 2px 2px rgb(78, 78, 78);
+
+}
+
+.create-rv-btn-container {
+    padding: 20px;
+}
+
+.rv-errors {
+    margin: 0px;
+    font-size: 12px;
+}

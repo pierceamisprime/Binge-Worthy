@@ -1,0 +1,47 @@
+.signup-modal-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+    height: 480px;
+    border-radius: 25px;
+}
+
+.signup-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-modal > label {
+    padding: 10px;
+}
+
+.signup-modal > label > input {
+    width: 200px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.signup-btn {
+    background-color: #557e71;
+    border: none;
+    border-radius: 25px;
+    width: 175px;
+    height: 35px;
+
+}
+
+.signup-btn:hover {
+    box-shadow: 2px 2px 2px rgb(78, 78, 78);
+
+}
+
+.signup-btn-container {
+    padding: 20px;
+}
+
+.login-errors {
+    font-size: 13px;
+}

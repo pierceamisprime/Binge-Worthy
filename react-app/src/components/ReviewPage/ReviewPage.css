@@ -1,12 +1,13 @@
 .review-page-container {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 150px;
 }
 
 .review-post-recap {
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 .other-reviews {
@@ -19,5 +20,22 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background-color: white;
+}
+
+.rv-manage-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rv-username {
+    color: gray;
 }

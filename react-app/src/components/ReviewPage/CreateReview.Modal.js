@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { createReviewThunk } from "../../store/reviews"
+import './CreateReviewModal.css'
 
 
 const CreateReviewModal = ({postId}) => {
@@ -41,13 +42,14 @@ const CreateReviewModal = ({postId}) => {
     }
 
     return (
-        <div>
-            <h1>Create Review</h1>
+        <div className="rv-modal">
+                <i onClick={() => closeModal()} class="fa-solid fa-xmark fa-lg" id="dl-x"></i>
             <form className="create-review-form" onSubmit={handleSubmit}>
+            <h1>Create Review</h1>
                 <label>
-                {errors.review && submitted && <p style={{ color: 'red '}}>{errors.review}</p>}
+                {errors.review && submitted && <p style={{ color: 'red '}} className='rv-errors'>{errors.review}</p>}
                     <textarea
-                        placeholder="Review"
+                        placeholder="Review..."
                         type='text'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
@@ -55,7 +57,7 @@ const CreateReviewModal = ({postId}) => {
 
                 </label>
                 <label>
-                {errors.rating && submitted && <p style={{ color: 'red '}}>{errors.rating}</p>}
+                {errors.rating && submitted && <p style={{ color: 'red '}} className='rv-errors'>{errors.rating}</p>}
                     <input
                         placeholder="Rating"
                         type="text"
@@ -63,8 +65,8 @@ const CreateReviewModal = ({postId}) => {
                         onChange={(e) => setRating(e.target.value)}
                     />
                 </label>
-                <div>
-                    <button type="submit">Create</button>
+                <div className="create-rv-btn-container">
+                    <button className="create-rv-btn" type="submit">Create</button>
                 </div>
             </form>
         </div>

@@ -7,7 +7,7 @@
     flex-direction: column;
     width: 500px;
     height: 800px;
-    background-color:#5b5b5b;
+    background-color:white;
     border-radius: 25px;
 
 }
@@ -29,8 +29,18 @@
     justify-content: center;
     width: 300px;
     height: 35px;
-    border-radius: 25px;
+    border-radius: 5px;
+    border: 1px solid gray;
 
+
+}
+
+.create-post-form > label > p {
+    border: none;
+}
+
+.create-post-form > label > textarea {
+    height: 50px;
 }
 
 .create-post-form > label {
@@ -51,17 +61,16 @@
   }
 
   .create-post-btn {
-    background-color: #6a6a6a;
-    border-radius: 25px;
-    height: 40px;
-    width: 200px;
-    font-size: 17px;
+    background-color: #557e71;
     border: none;
+    border-radius: 25px;
+    width: 200px;
+    height: 40px;
 
   }
 
   .create-post-btn:hover {
-    background-color:  #557e71;
+    box-shadow: 2px 2px 2px rgb(78, 78, 78);
   }
 
   .create-post-btn-container {

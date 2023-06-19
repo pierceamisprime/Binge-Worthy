@@ -6,6 +6,7 @@ from ...models.models import Post, Review
 from ...models.user import User
 from ...forms.posts_form import PostForm
 from ...forms.review_form import ReviewForm
+from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 
 posts = Blueprint("posts", __name__)
@@ -44,9 +45,16 @@ def all_posts():
 @login_required
 def delete_post(id):
     post_to_delete = Post.query.get(id)
-    db.session.delete(post_to_delete)
-    db.session.commit()
-    return {'message': 'Successfully deleted'}
+
+    file_delete = remove_file_from_s3(post_to_delete.post_img)
+
+    if file_delete:
+        db.session.delete(post_to_delete)
+        db.session.commit()
+        return {'message': 'Successfully deleted'}
+
+    else:
+        return 'File delete error!'
 
 
 @posts.route('', methods=['POST'])
@@ -58,6 +66,17 @@ def create_post():
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
+
+
+        image = form.data['post_img']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if 'url' not in upload:
+            return print('upload=============',upload)
+
+
+
         selected_user = User.query.get(current_user.id)
         # print('formdata========', form.data['category_type'])
         result = Post(
@@ -65,7 +84,7 @@ def create_post():
             owner_review = form.data['owner_review'],
             owner_rating = form.data['owner_rating'],
             watching_on = form.data['watching_on'],
-            post_img = form.data['post_img'],
+            post_img = upload['url'],
             user = selected_user,
             category = form.data['category'],
             created_at = date.today()
@@ -87,14 +106,31 @@ def update_post(id):
 
 
     if form.validate_on_submit():
+
+        image = form.data['post_img']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if 'url' not in upload:
+            return print('upload=============',upload)
+
         post = Post.query.get(id)
+
+        file_delete = remove_file_from_s3(post.post_img)
+
+        # if file_delete:
+        #     db.session.delete(post)
+        #     db.session.commit()
+        #     return {'message': 'Successfully deleted'}
+
+
         print('post============================>', post)
 
         post.title = form.data['title']
         post.owner_review = form.data['owner_review']
         post.owner_rating = form.data['owner_rating']
         post.watching_on = form.data['watching_on']
-        post.post_img = form.data['post_img']
+        post.post_img = upload['url']
         post.category = form.data['category']
         post.created_at = date.today()
 

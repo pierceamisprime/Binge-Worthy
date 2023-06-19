@@ -14,7 +14,7 @@ const CreatePostModal = () => {
     const [ownerReview, setOwnerReview] = useState('')
     const [ownerRating, setOwnerRating] = useState('')
     const [watchingOn, setWatchingOn] = useState('')
-    const [postImg, setPostImg] = useState('')
+    const [postImg, setPostImg] = useState(null)
     const [category, setCategory] = useState(0)
     const [errors, setErrors] = useState([])
     const [submitted, setSubmitted] = useState('')
@@ -75,7 +75,7 @@ const CreatePostModal = () => {
         <div className="create-post-modal-container">
             <i onClick={() => closeModal()} class="fa-solid fa-xmark fa-lg"></i>
             <h1>Binge Worthy?</h1>
-            <form className="create-post-form" onSubmit={handleSubmit}>
+            <form className="create-post-form" onSubmit={handleSubmit} encType='multipart/form-data'>
                 <label>
                     {errors.title && submitted && <p style={{ color: 'red '}}>{errors.title}</p>}
                     <input
@@ -146,9 +146,10 @@ const CreatePostModal = () => {
                     {errors.postImg && submitted && <p style={{ color: 'red '}}>{errors.postImg}</p>}
                     <input
                         placeholder="Add Image"
-                        type="text"
-                        value={postImg}
-                        onChange={(e) => setPostImg(e.target.value)}
+                        type="file"
+                        accept="image/*"
+                        // value={postImg}
+                        onChange={(e) => setPostImg(e.target.files[0])}
                     />
                 </label>
                 <div className="create-post-btn-container">

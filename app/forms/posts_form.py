@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, TextAreaField, IntegerField, DateField, SelectField, FloatField
 from wtforms.validators import DataRequired, Length, URL, Email, ValidationError
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from ..api.routes.AWS_helpers import ALLOWED_EXTENSIONS
 
 def review_length(form, field):
     # Checking if review length is correct
@@ -24,6 +26,7 @@ class PostForm(FlaskForm):
     owner_rating = FloatField('Rating', validators=[DataRequired(), rating_length])
     watching_on = StringField('Watching On', validators=[DataRequired()])
     category = StringField('Category', validators=[DataRequired()])
-    post_img = StringField('Image')
+    # post_img = StringField('Image')
+    post_img = FileField('Image', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     created_at = DateField("Date")
     submit = SubmitField("Submit")

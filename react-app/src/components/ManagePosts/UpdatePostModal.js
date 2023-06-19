@@ -146,9 +146,10 @@ const UpdatePostModal = ({ postId }) => {
                     {errors.postImg && submitted && <p style={{ color: 'red '}}>{errors.postImg}</p>}
                     <input
                         placeholder="Add Image"
-                        type="text"
-                        value={postImg}
-                        onChange={(e) => setPostImg(e.target.value)}
+                        type="file"
+                        accept="image/*"
+                        // value={postImg}
+                        onChange={(e) => setPostImg(e.target.files[0])}
                     />
                 </label>
                 <div className="create-post-btn-container">

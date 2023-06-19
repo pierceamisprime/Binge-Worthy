@@ -33,8 +33,10 @@ const UpdatePostModal = ({ postId }) => {
         if (!(+ownerRating)) errors.ownerRating = "Rating must be number!"
         if (ownerRating < 0 || ownerRating > 10) errors.ownerRating = "Rating must be between 0-10"
         if (!watchingOn) errors.watchingOn = "Please provide streaming service"
+        if (watchingOn == 'Select Steaming Service') errors.watchingOn = "Please provide streaming service"
         if (!postImg) errors.postImg = "Please provide Image"
         if (!category) errors.category = "Please provide category"
+        if (category == 'Select Category') errors.category = "Please provide category"
         setErrors(errors)
     }, [title, ownerReview, ownerRating, watchingOn, postImg, category])
 

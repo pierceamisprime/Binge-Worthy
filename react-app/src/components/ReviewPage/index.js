@@ -26,6 +26,22 @@ const ReviewPage = () => {
         dispatch(allReviewsThunk())
     }, [dispatch])
 
+    let avgRating = 0
+    postsReviews.forEach(review => {
+        avgRating += review.rating
+
+        // console.log(avgRating)
+        // console.log(review.rating)
+        // console.log(avgRating)
+        // return avgRating
+
+
+    });
+
+   avgRating = avgRating / postsReviews.length
+
+   console.log(avgRating)
+
 
     return (
         <div className="review-page-container">
@@ -53,17 +69,19 @@ const ReviewPage = () => {
                 <h2>
                     Reviews
                 </h2>
+                <span>{postsReviews.length} Reviews</span>
+                <span>Average Rating • {parseFloat(avgRating).toFixed(1)}</span>
                 {postsReviews.toReversed().map(review => {
                     const isCurrentUser = review.user.id === user.id
                     return (
                         <div className="rp-review" key={review.id}>
-                            <div className="mangage-buttons">
+                            <div className="rv-manage-buttons">
                                 {isCurrentUser && (
                                     <EditDeleteReviewDrop user={user} reviewId={review.id} postId={postId}
                                     />
                                 )}
                             </div>
-                            <span>{review.user.username}</span>
+                            <span className="rv-username">{review.user.username}</span>
                             <span>{review.review_body}</span>
                             <span>Rating: {review.rating}</span>
 

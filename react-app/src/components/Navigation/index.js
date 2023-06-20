@@ -24,6 +24,10 @@ function Navigation({ isLoaded }){
 				</NavLink>
 			</li>
 			<li className='nav-function-buttons'>
+				<li>
+
+				<i class="fa-solid fa-bookmark fa-xl" style={{color: "#557e71", padding:'8px'} }></i>
+				</li>
 			<li className='nav-create-btn'>
 				{sessionUser &&
 				<OpenModalButton
@@ -31,7 +35,7 @@ function Navigation({ isLoaded }){
 				modalComponent={<CreatePostModal categories={categories} />}
 				/>
 
-				}
+			}
 			</li>
 
 			{isLoaded && (

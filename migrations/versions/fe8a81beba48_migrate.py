@@ -1,8 +1,8 @@
 """migrate
 
-Revision ID: 0cd77fb5b126
+Revision ID: fe8a81beba48
 Revises:
-Create Date: 2023-06-14 19:23:31.120256
+Create Date: 2023-06-19 17:00:28.427339
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '0cd77fb5b126'
+revision = 'fe8a81beba48'
 down_revision = None
 branch_labels = None
 depends_on = None

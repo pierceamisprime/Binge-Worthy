@@ -10,17 +10,19 @@ const UpdatePostModal = ({ postId }) => {
     const { closeModal } = useModal()
     const categories = Object.values(useSelector(state => state.categories))
     const currentPost = useSelector(state => state.posts[postId])
-    console.log('currentpost===========', currentPost)
-    console.log('postid===========', postId)
+    // console.log('currentpost===========', currentPost)
+    // console.log('postid===========', postId)
 
     const [title, setTitle] = useState(currentPost?.title)
     const [ownerReview, setOwnerReview] = useState(currentPost?.owner_review)
     const [ownerRating, setOwnerRating] = useState(currentPost?.owner_rating)
     const [watchingOn, setWatchingOn] = useState(currentPost?.watching_on)
-    const [postImg, setPostImg] = useState(currentPost?.post_img)
+    const [postImg, setPostImg] = useState(null)
     const [category, setCategory] = useState(currentPost?.category)
     const [errors, setErrors] = useState([])
     const [submitted, setSubmitted] = useState('')
+
+    console.log(currentPost.post_img)
 
     useEffect(() => {
         const errors = {}
@@ -50,7 +52,7 @@ const UpdatePostModal = ({ postId }) => {
         formData.append('owner_review', ownerReview)
         formData.append('owner_rating', ownerRating)
         formData.append('watching_on', watchingOn)
-        formData.append('post_img', postImg)
+        formData.append('post_img', currentPost.post_img)
         formData.append('category', category)
         console.log('formData==============',formData)
         console.log(category)
@@ -145,7 +147,6 @@ const UpdatePostModal = ({ postId }) => {
                 <label>
                     {errors.postImg && submitted && <p style={{ color: 'red '}}>{errors.postImg}</p>}
                     <input
-                        placeholder="Add Image"
                         type="file"
                         accept="image/*"
                         // value={postImg}

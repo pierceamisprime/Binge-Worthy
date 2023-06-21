@@ -1,0 +1,54 @@
+.profile-pic {
+    height: 80px;
+    width: 80px;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+.pp-posts-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 50px;
+
+}
+
+.pp-posts-container > div {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 25px;
+    width: 50%;
+
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+}
+
+.user-info > button {
+    border-radius: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+.pp-modal {
+    background-color: white;
+    height: 300px;
+    width: 300px;
+    border-radius: 25px;
+}
+
+.pp-form > h2 {
+    padding: 20px;
+}
+
+.pp-form > label > input {
+    padding: 20px;
+}

@@ -73,7 +73,7 @@ export const editPostThunk = (postId, post) => async (dispatch) => {
 }
 
 export const deletePostThunk = (postId) => async (dispatch) => {
-    const response = await fetch(`api/posts/${postId}/delete`, {
+    const response = await fetch(`/api/posts/${postId}/delete`, {
         method: 'DELETE'
     })
     if (response.ok) {

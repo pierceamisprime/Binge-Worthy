@@ -4,11 +4,12 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -47,7 +48,10 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <div className="user-menu">
-            <li>{user.username}</li>
+            <button className="logout-btn" onClick={() => {
+              history.push(`/users/${user.id}`)
+              // closeMenu()
+            }}>{user.username}</button>
             {/* <li>{user.email}</li> */}
             <li>
               <button className="logout-btn" onClick={handleLogout}>Log Out</button>

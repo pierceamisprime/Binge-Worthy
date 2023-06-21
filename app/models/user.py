@@ -28,7 +28,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    profile_pic = db.Column(db.String(2000))
+    profile_pic = db.Column(db.String(2000), default='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
     hashed_password = db.Column(db.String(255), nullable=False)
 
     posts = db.relationship('Post', back_populates='user')

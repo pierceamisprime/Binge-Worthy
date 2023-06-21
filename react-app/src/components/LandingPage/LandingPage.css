@@ -31,7 +31,7 @@ body {
 
 .lp-posts-container {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -51,13 +51,32 @@ body {
     border: none;
 
 }
+.lp-post:hover {
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+    transition: all .4s ease;
+    background-color: #2F2E30;
+    border: none;
 
-.lp-posts-container > div {
+}
+
+.lp-posts {
     display: flex;
     flex-direction: column;
     border: 1px solid white;
     border-radius: 25px;
     width: 50%;
+
+}
+.lp-post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 25px;
+    margin: 5px;
+
+
 
 }
 
@@ -183,4 +202,20 @@ body {
     width: 100%;
 
     border: none;
+}
+
+.lp-carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* height: 1000px; */
+    min-width: 1024px;
+    max-width: 1200px;
+    gap: 10px;
+}
+
+.lp-category {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
 }

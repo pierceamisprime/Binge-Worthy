@@ -9,6 +9,8 @@ function SignupFormModal() {
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [firstname, setFirstname] = useState('')
+	const [lastname, setLastname] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
@@ -16,7 +18,7 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			const data = await dispatch(signUp(firstname, lastname, username, email, password));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -40,13 +42,31 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
+					<input
+					placeholder="First Name"
+					type="text"
+					value={firstname}
+					onChange={(e) => setFirstname(e.target.value)}
+					required
+					/>
+				</label>
+				<label>
+					<input
+					placeholder="Last Name"
+					type="text"
+					value={lastname}
+					onChange={(e) => setLastname(e.target.value)}
+					required
+					/>
+				</label>
+				<label>
 
 					<input
 					placeholder="Email"
-						type="text"
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						// required
+						required
 					/>
 				</label>
 				<label>
@@ -56,7 +76,7 @@ function SignupFormModal() {
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
-						// required
+						required
 					/>
 				</label>
 				<label>
@@ -66,7 +86,7 @@ function SignupFormModal() {
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						// required
+						required
 					/>
 				</label>
 				<label>
@@ -76,7 +96,7 @@ function SignupFormModal() {
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
-						// required
+						required
 					/>
 				</label>
 				<div className="signup-btn-container">

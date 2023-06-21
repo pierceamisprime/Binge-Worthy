@@ -17,6 +17,7 @@ const ReviewPage = () => {
     const reviews = Object.values(useSelector(state => state.reviews))
     const postsReviews = reviews.filter(review => review.post_id === post?.id)
     const user = useSelector(state => state.session.user)
+    const userReviews = postsReviews.filter(review => user?.id === review.user.id)
     // const post = posts.filter()
 
     // console.log('post========', postId)
@@ -70,7 +71,11 @@ const ReviewPage = () => {
                     Reviews
                 </h2>
                 <span>{postsReviews.length} Reviews</span>
-                <span>Average Rating • {parseFloat(avgRating).toFixed(1)}</span>
+                {postsReviews.length ?
+
+                <span>Average Rating • {parseFloat(avgRating).toFixed(1)}</span> :
+                <span>Average Rating • No reviews yet!</span>
+                }
                 {postsReviews.toReversed().map(review => {
                     const isCurrentUser = review.user.id === user.id
                     return (
@@ -90,11 +95,13 @@ const ReviewPage = () => {
                 })}
                 </div>
                 <div className="create-review-btn">
-
+                {!userReviews.length &&
                  <OpenModalButton
                                 buttonText='Create Review'
                                 modalComponent={<CreateReviewModal postId={postId}/>}
                             />
+
+                }
                 </div>
 
             </div>

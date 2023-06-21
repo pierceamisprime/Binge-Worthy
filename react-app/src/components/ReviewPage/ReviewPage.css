@@ -22,12 +22,13 @@
     gap: 5px;
     border-bottom: 1px solid black;
     padding: 20px;
+    overflow-wrap: anywhere;
 }
 
 .reviews-container {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    /* width: 500px; */
     background-color: white;
 }
 

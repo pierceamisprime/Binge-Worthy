@@ -52,7 +52,7 @@ const UpdatePostModal = ({ postId }) => {
         formData.append('owner_review', ownerReview)
         formData.append('owner_rating', ownerRating)
         formData.append('watching_on', watchingOn)
-        formData.append('post_img', currentPost.post_img)
+        formData.append('post_img', postImg)
         formData.append('category', category)
         console.log('formData==============',formData)
         console.log(category)

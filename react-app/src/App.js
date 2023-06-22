@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import WelcomePage from "./components/WelcomePage";
 import ReviewPage from "./components/ReviewPage";
 import ProfilePage from "./components/ProfilePage";
+import AboutMe from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/about'>
+            <AboutMe />
           </Route>
           <Route path='/users/:userId'>
             <ProfilePage />

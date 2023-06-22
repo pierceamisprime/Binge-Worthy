@@ -8,12 +8,25 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+    width: 50%;
+    overflow-wrap: anywhere;
+}
+
+.reviews-container > h2 {
+    display: flex;
+    justify-content: center;
 }
 
 .other-reviews {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    width: 80%;
+    background-color: white;
+}
+
+.avg-rating {
+    border-bottom: 1px solid black;
 }
 
 .rp-review {
@@ -40,3 +53,20 @@
 .rv-username {
     color: gray;
 }
+
+.create-review-btn > button {
+    background-color: #c1c1c1;
+    border: none;
+    border-radius: 25px;
+    width: 200px;
+    height: 40px;
+
+  }
+
+   .create-review-btn > button:hover {
+    box-shadow: 2px 2px 2px rgb(78, 78, 78);
+  }
+
+  .create-review-btn {
+    padding: 15px;
+  }

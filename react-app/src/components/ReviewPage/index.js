@@ -70,11 +70,11 @@ const ReviewPage = () => {
                 <h2>
                     Reviews
                 </h2>
-                <span>{postsReviews.length} Reviews</span>
+                <span>{postsReviews.length} {postsReviews.length === 1 ? 'Review' : 'Reviews'}</span>
                 {postsReviews.length ?
 
-                <span>Average Rating • {parseFloat(avgRating).toFixed(1)}</span> :
-                <span>Average Rating • No reviews yet!</span>
+                <span className="avg-rating">Average Rating • {parseFloat(avgRating).toFixed(1)}</span> :
+                <span className="avg-rating">Average Rating • No reviews yet!</span>
                 }
                 {postsReviews.toReversed().map(review => {
                     const isCurrentUser = review.user.id === user.id

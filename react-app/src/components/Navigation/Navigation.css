@@ -115,3 +115,21 @@ li {
 .log-sign-dd > button:hover {
   box-shadow: 2px 2px 2px rgb(78, 78, 78);
 }
+
+.search-container {
+  border: 1px solid rgb(216, 212, 212);
+  border-radius: 20px;
+  width: 400px;
+  align-items: center;
+  display: flex;
+}
+
+.search-container > i {
+  padding-left: 15px;
+  font-size: 15px;
+}
+
+.left-nav {
+  display: flex;
+  gap: 30px;
+}

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, TextAreaField, IntegerField, DateField, SelectField
+from wtforms import StringField, SubmitField, PasswordField, TextAreaField, IntegerField, DateField, SelectField, FloatField
 from wtforms.validators import DataRequired, Length, URL, Email, ValidationError
 
 def review_length(form, field):
@@ -15,4 +15,4 @@ def rating_length(form, field):
 
 class ReviewForm(FlaskForm):
     review_body = StringField('Review', validators=[DataRequired(), review_length])
-    rating = IntegerField('Rating', validators=[DataRequired(), rating_length])
+    rating = FloatField('Rating', validators=[DataRequired(), rating_length])

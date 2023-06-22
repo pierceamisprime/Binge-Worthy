@@ -81,9 +81,9 @@ const ProfilePage = () => {
 
                         </div>
                         <div className="lp-review-watching-container">
-                        <span id="lp-review">
+                        {/* <span id="lp-review">
                         Review: {post.owner_review}
-                        </span>
+                        </span> */}
                         <span id="lp-watching">
                         Watching On: {post.watching_on}
                         </span>

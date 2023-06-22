@@ -64,7 +64,8 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                            {/* <span className="lp-user">{post.user.username}</span> */}
+                            <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}
@@ -119,7 +120,8 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                            {/* <span className="lp-user">{post.user.username}</span> */}
+                            <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}
@@ -173,7 +175,7 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                         <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}
@@ -227,7 +229,7 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                         <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}
@@ -281,7 +283,7 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                         <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}
@@ -335,7 +337,7 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                         <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}
@@ -389,7 +391,7 @@ const LandingPage = () => {
                 return (
                     <div className="lp-post" key={post.id}>
                          <div className="manage-buttons">
-                            <span className="lp-user">{post.user.username}</span>
+                         <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.first_name} {post.user.last_name}</NavLink>
                             <div className="edit-dl-drop">
                             {isCurrentUser && (
                                     <EditDeleteDrop user={user} postId={post.id}

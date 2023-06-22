@@ -88,7 +88,7 @@ const ReviewPage = () => {
                             </div>
                             <span className="rv-username">{review.user.username}</span>
                             <span>{review.review_body}</span>
-                            <span>Rating: {review.rating}</span>
+                            <span>Rating: {parseFloat(review.rating).toFixed(1)}</span>
 
                         </div>
                     )

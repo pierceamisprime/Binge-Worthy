@@ -23,7 +23,7 @@ const CreatePostModal = () => {
         const errors = {}
 
         if (!title) errors.title = "Please provide title"
-        if (title.length > 100) errors.title = "Title must be between 1-100 characters"
+        if (title.length > 30) errors.title = "Title must be between 1-30 characters"
         if (!ownerReview) errors.ownerReview = "Please provide Review"
         if (ownerReview.length > 500) errors.ownerReview = "Review must be between 1-500 characters"
         if (!ownerRating) errors.ownerRating = "Please provide Rating"

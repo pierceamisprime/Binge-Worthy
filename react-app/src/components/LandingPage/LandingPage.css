@@ -162,6 +162,7 @@ body {
 
 .lp-user {
     color: gray;
+    text-decoration: none;
 }
 
 .edit-delete-post {

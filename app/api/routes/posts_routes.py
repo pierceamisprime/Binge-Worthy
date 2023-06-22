@@ -116,6 +116,7 @@ def update_post(id):
 
         post = Post.query.get(id)
 
+
         file_delete = remove_file_from_s3(post.post_img)
 
         # if file_delete:

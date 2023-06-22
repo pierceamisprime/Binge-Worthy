@@ -16,17 +16,28 @@ function Navigation({ isLoaded }){
 		dispatch(getAllCategoriesThunk())
 	}, [dispatch])
 
+	const handleBookmarkBtn = () => {
+        alert('Feature coming soon...')
+    }
+	const handleSearch = () => {
+        alert('Feature coming soon...')
+    }
+
 	return (
 		<ul className='nav-bar-container'>
-			<li>
+			<li className='left-nav'>
 				<NavLink exact to={sessionUser ? '/posts' : '/'}>
 					<img className='bw-logo' src='https://i.imgur.com/squTCxA.png'></img>
 				</NavLink>
+			<div onClick={handleSearch} className='search-container'>
+			<i class="fa-solid fa-magnifying-glass"></i>
+
+			</div>
 			</li>
 			<li className='nav-function-buttons'>
 				<li>
 
-				<i class="fa-solid fa-bookmark fa-xl" style={{color: "#557e71", padding:'8px'} }></i>
+				<i onClick={handleBookmarkBtn} class="fa-solid fa-bookmark fa-xl" style={{color: "#557e71", padding:'8px'} }></i>
 				</li>
 			<li className='nav-create-btn'>
 				{sessionUser &&

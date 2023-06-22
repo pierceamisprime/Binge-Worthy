@@ -8,12 +8,34 @@ def seed_users():
         username='Demo', first_name='Demolition', last_name='User', email='demo@aa.io', password='password')
     marnie = User(
         username='marnie23', first_name='Marnie', last_name='Smith', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie45', first_name='Bobbie', last_name='Jones', email='bobbie@aa.io', password='password')
+    tien = User(
+        username='trennytien', first_name='Tien', last_name='Hoang', email='Tien@aa.io', password='password')
+    raoul = User(
+        username='Isavelives22', first_name='Raoul', last_name='Andalis', email='Raoul@aa.io', password='password')
+    jenna = User(
+        username='smartypants45', first_name='Jenna', last_name='Godfrey', email='Jenna@aa.io', password='password')
+    taylor = User(
+        username='therealtaylor12', first_name='Taylor', last_name='Mcclerin', email='Taylor@aa.io', password='password')
+    jay = User(
+        username='goat23', first_name='Jay', last_name='Levin', email='Jay@aa.io', password='password')
+    ben = User(
+        username='optimusprime6', first_name='Ben', last_name='Wilson', email='Ben@aa.io', password='password')
+    katie = User(
+        username='theQ', first_name='Katie', last_name='Pee', email='Katie@aa.io', password='password')
+    pj = User(
+        username='KwargMaster', first_name='PJ', last_name='Singh', email='PJ@aa.io', password='password')
+
 
     db.session.add(demo)
     db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(tien)
+    db.session.add(raoul)
+    db.session.add(jenna)
+    db.session.add(taylor)
+    db.session.add(jay)
+    db.session.add(ben)
+    db.session.add(katie)
+    db.session.add(pj)
     db.session.commit()
 
 

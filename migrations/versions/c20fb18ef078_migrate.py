@@ -1,8 +1,8 @@
 """migrate
 
-Revision ID: aa7db6887b6f
+Revision ID: c20fb18ef078
 Revises:
-Create Date: 2023-06-21 18:06:10.813032
+Create Date: 2023-06-22 14:14:30.157764
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'aa7db6887b6f'
+revision = 'c20fb18ef078'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -56,7 +56,7 @@ def upgrade():
         op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(length=100), nullable=False),
+    sa.Column('title', sa.String(length=30), nullable=False),
     sa.Column('owner_review', sa.String(length=500), nullable=False),
     sa.Column('owner_rating', sa.Float(), nullable=False),
     sa.Column('watching_on', sa.String(length=55), nullable=True),
@@ -72,7 +72,7 @@ def upgrade():
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('review_body', sa.String(length=500), nullable=False),
-    sa.Column('rating', sa.Integer(), nullable=False),
+    sa.Column('rating', sa.Float(), nullable=False),
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),

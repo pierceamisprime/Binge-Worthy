@@ -1,0 +1,41 @@
+.my-info {
+    display: flex
+}
+
+
+.my-info {
+    margin-left: 20px;
+    margin-top: 80px;
+}
+
+.about-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 150px;
+    object-fit: cover;
+}
+
+.bio {
+    margin-left: 50px;
+}
+
+.bio > .name {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.fa-brands {
+    font-size: 50px;
+    margin-right: 40px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer * {
+    height: 40px;
+    margin-top: 300px;
+    margin-bottom: 20px;
+}

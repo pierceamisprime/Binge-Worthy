@@ -9,7 +9,7 @@ Python, Flask, Javascript, SQLAlchemy, React, Redux, PostgreSQL
 
 ## Home Page
 
-[Alt text](<https://i.imgur.com/S5gw5FL.png>)
+![readme-example-1](https://i.imgur.com/S5gw5FL.png)
 
 
 

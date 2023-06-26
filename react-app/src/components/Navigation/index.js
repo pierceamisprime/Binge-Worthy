@@ -35,10 +35,13 @@ function Navigation({ isLoaded }){
 			</div>
 			</li>
 			<li className='nav-function-buttons'>
+				{sessionUser &&
 				<li>
 
 				<i onClick={handleBookmarkBtn} class="fa-solid fa-bookmark fa-xl" style={{color: "#557e71", padding:'8px'} }></i>
 				</li>
+
+				}
 			<li className='nav-create-btn'>
 				{sessionUser &&
 				<OpenModalButton

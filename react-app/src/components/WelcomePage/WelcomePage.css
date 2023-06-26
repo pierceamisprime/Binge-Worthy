@@ -1,0 +1,11 @@
+.wp-c {
+    display: flex;
+    gap: 150px;
+}
+
+.wp-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}

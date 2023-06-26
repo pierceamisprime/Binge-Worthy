@@ -16,6 +16,13 @@
 
 }
 
+.pp-name {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
 .pp-posts-container > div {
     display: flex;
     flex-direction: column;
@@ -28,7 +35,7 @@
 .user-info {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    padding: 20px;
     gap: 5px;
 }
 

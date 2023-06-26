@@ -39,38 +39,56 @@ const ReviewPage = () => {
 
     });
 
+
+
    avgRating = avgRating / postsReviews.length
 
-   console.log(avgRating)
+//    console.log(avgRating)
 
 
     return (
         <div className="review-page-container">
             <div className="review-post-recap">
+                <div className="rp-user-c">
+
+                        <span className="rp-user">{post?.user?.username}</span>
+                </div>
             <h2 className="review-title">
                         {post?.title}
                         </h2>
-                        <img className="lp-images" src={post?.post_img}></img>
-                        <span>
+                        <img className="rp-images" src={post?.post_img}></img>
+                        <div className="rp-post">
+                        <span className="rp-r">
                         Review: {post?.owner_review}
                         </span>
-                        <span>
-                        Rating: {post?.owner_rating}
-                        </span>
-                        <span>
+                        <span className="rp-w">
                         Watching On: {post?.watching_on}
                         </span>
-                        <span>
+                        <span className="rp-c">
                         Category: {post?.category}
                         </span>
+                        <span className="rp-rating">
+                        Rating: {post?.owner_rating}
+                        </span>
+                        </div>
 
             </div>
+            <div className="rp-b"></div>
             <div className="other-reviews">
                 <div className="reviews-container">
+                <div className="create-review-btn">
                 <h2>
                     Reviews
                 </h2>
-                <span>{postsReviews.length} {postsReviews.length === 1 ? 'Review' : 'Reviews'}</span>
+                {!userReviews.length &&
+                 <OpenModalButton
+                 buttonText='Create Review'
+                 modalComponent={<CreateReviewModal postId={postId}/>}
+                 />
+
+                }
+                </div>
+                <span className="r-count">{postsReviews.length} {postsReviews.length === 1 ? 'Review' : 'Reviews'}</span>
                 {postsReviews.length ?
 
                 <span className="avg-rating">Average Rating • {parseFloat(avgRating).toFixed(1)}</span> :
@@ -87,14 +105,14 @@ const ReviewPage = () => {
                                 )}
                             </div>
                             <span className="rv-username">{review.user.username}</span>
-                            <span>{review.review_body}</span>
-                            <span>Rating: {parseFloat(review.rating).toFixed(1)}</span>
+                            <span className="rp-r">{review.review_body}</span>
+                            <span className="rp-rating">Rating: {parseFloat(review.rating).toFixed(1)}</span>
 
                         </div>
                     )
                 })}
                 </div>
-                <div className="create-review-btn">
+                {/* <div className="create-review-btn">
                 {!userReviews.length &&
                  <OpenModalButton
                                 buttonText='Create Review'
@@ -102,7 +120,7 @@ const ReviewPage = () => {
                             />
 
                 }
-                </div>
+                </div> */}
 
             </div>
 

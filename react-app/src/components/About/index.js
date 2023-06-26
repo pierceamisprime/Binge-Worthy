@@ -13,6 +13,7 @@ const AboutMe = () => {
     return (
         <>
         <div className="about-house">
+                <h1>Meet the developer...</h1>
             <div className="my-info">
             <div className="about-img-container">
                 <img className="about-img"

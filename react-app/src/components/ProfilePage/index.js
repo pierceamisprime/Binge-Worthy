@@ -42,11 +42,12 @@ const ProfilePage = () => {
             modalComponent={<ProfilePicModal user={current_user} userId={userId}/>}
             />
             {/* // <img className="profile-pic" src={user?.profile_pic ? user.profile_pic : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} /> */}
-            <span>{user?.first_name} {user?.last_name} </span>
+            <span className="pp-name">{user?.first_name} {user?.last_name} </span>
 
             </div>
 
                 <div className="pp-posts-container">
+                    <h1>Your Binge Recommendations</h1>
 
         {userPosts.toReversed().map(post => {
             const isCurrentUser = post.user?.id === current_user?.id;

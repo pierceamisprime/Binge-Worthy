@@ -9,7 +9,7 @@ Python, Flask, Javascript, SQLAlchemy, React, Redux, PostgreSQL
 
 ## Home Page
 
-[Alt text](<img width="1440" alt="Screenshot 2023-06-25 at 9 20 54 PM" src="https://github.com/pierceamisprime/Binge-Worthy/assets/113329945/ad10bd14-e8ed-4df0-b00c-7cd3073c7d3a">)
+[Alt text](<https://i.imgur.com/S5gw5FL.png>)
 
 
 

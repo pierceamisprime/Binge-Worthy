@@ -11,6 +11,18 @@ Python, Flask, Javascript, SQLAlchemy, React, Redux, PostgreSQL
 
 ![readme-example-1](https://i.imgur.com/S5gw5FL.png)
 
+## Film Page
+
+![readme-example-1](https://i.imgur.com/eQ5cBvL.png)
+
+## Create Post
+
+![readme-example-1](blob:https://imgur.com/a6f82b18-b05a-436d-8c6c-eaf9fac9970e)
+
+## Landing Page
+
+![readme-example-1](blob:https://imgur.com/39d29905-cbac-463d-86c4-e7d517c2a172)
+
 
 
 

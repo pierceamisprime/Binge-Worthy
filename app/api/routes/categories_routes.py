@@ -17,7 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @categories.route('')
-@login_required
+# @login_required
 def all_categories():
     categories = Category.query.all()
 

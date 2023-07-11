@@ -9,6 +9,8 @@ import './LandingPage.css'
 import { getAllCategoriesThunk } from "../../store/categories"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import BookmarkButton from "../BookMarks"
+import { getUserThunk } from "../../store/session"
 
 
 const LandingPage = () => {
@@ -31,6 +33,7 @@ const LandingPage = () => {
     useEffect(() => {
         dispatch(allPostsThunk())
         dispatch(getAllCategoriesThunk())
+        dispatch(getUserThunk(user?.id))
     }, [dispatch])
 
     if (!user) return <Redirect to="/" />;
@@ -67,11 +70,13 @@ const LandingPage = () => {
                             {/* <span className="lp-user">{post.user.username}</span> */}
                             <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>

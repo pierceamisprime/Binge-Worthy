@@ -34,6 +34,14 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', back_populates='user')
     review = db.relationship('Review', back_populates='user')
 
+    user_bookmarks = db.relationship(
+        "Post",
+        secondary='bookmarks',
+        back_populates="post_bookmarks",
+        cascade="delete, all",
+    )
+
+
     following = db.relationship('User', secondary='follows',
                                 primaryjoin=follows.c.user_is == id,
                                 secondaryjoin=follows.c.following == id,
@@ -58,5 +66,6 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email,
             'profile_pic': self.profile_pic,
+            'user_bookmarks': [bookmark.to_dict_bookmarks() for bookmark in self.user_bookmarks],
             'is_following': {}
         }

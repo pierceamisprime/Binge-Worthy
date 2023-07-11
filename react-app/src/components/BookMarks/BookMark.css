@@ -1,0 +1,27 @@
+ .favorite-button button {
+    border: none;
+    background: none;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+ .favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: all ease-in-out 200ms;
+    background-color: rgba(22, 24, 35, .06);
+    margin-top: 8px;
+    margin-bottom: 6px;
+}
+
+.yellowFavorite {
+    color: rgb(235, 203, 76);
+}

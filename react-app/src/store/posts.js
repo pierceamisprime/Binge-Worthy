@@ -3,6 +3,7 @@ const CREATE_POST = 'posts/CREATE_POST';
 const EDIT_POST = 'posts/EDIT_POST';
 const DELETE_POST = 'posts/DELETE_POST'
 
+
 const allPosts = (posts) => ({
     type: ALL_POSTS,
     posts
@@ -22,6 +23,8 @@ const deletePost = (postId) => ({
     type: DELETE_POST,
     postId
 })
+
+
 
 export const allPostsThunk = () => async (dispatch) => {
     const response = await fetch('/api/posts')

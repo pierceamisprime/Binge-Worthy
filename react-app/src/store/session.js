@@ -4,6 +4,18 @@ const REMOVE_USER = "session/REMOVE_USER";
 const ALL_USERS = 'session/ALL_USERS';
 const GET_USER = 'session/GET_USER';
 const EDIT_USER = 'session/EDIT_USER';
+const ADD_BOOKMARK = 'session/ADD_BOOKMARK'
+const DELETE_BOOKMARK = 'session/DELETE_BOOKMARK'
+
+const deleteBookmark = (post) => ({
+	type: DELETE_BOOKMARK,
+	post
+})
+
+const addBookmark = (post) => ({
+    type: ADD_BOOKMARK,
+    post
+})
 
 const editUser = (user) => ({
 	type: EDIT_USER,
@@ -32,6 +44,29 @@ const removeUser = () => ({
 
 
 const initialState = { user: null };
+
+export const deleteBookmarkThunk = (postId) => async (dispatch) => {
+	const response = await fetch(`/api/posts/${postId}/bookmark`, {
+		method: 'DELETE',
+	});
+	if (response.ok) {
+		const user = await response.json()
+		dispatch(deleteBookmark(user))
+		return user
+	}
+}
+
+export const addBookmarkThunk = (postId) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${postId}/bookmark`, {
+        method: 'PUT',
+
+    });
+    if (response.ok) {
+        const user = await response.json()
+        dispatch(addBookmark(user))
+        return user
+    }
+}
 
 
 export const editUserThunk = (user, userId) => async (dispatch) => {
@@ -185,6 +220,10 @@ export default function reducer(state = initialState, action) {
 			newState = { ...state }
 			newState.userProfile = action.user
 			return newState
+		case ADD_BOOKMARK:
+			return { ...action.post }
+		case DELETE_BOOKMARK:
+			return { ...action.post }
 		default:
 			return state;
 	}

@@ -28,6 +28,12 @@ class Post(db.Model):
 
     review = db.relationship('Review', back_populates='posts', cascade='all, delete-orphan')
 
+    post_bookmarks = db.relationship(
+        "User",
+        secondary='bookmarks',
+        back_populates="user_bookmarks",
+    )
+
     def __repr__(self):
         return f'<User {self.user_id}, {self.user.username}, just posted! Post #{self.id}>'
 
@@ -53,6 +59,17 @@ class Post(db.Model):
                 'profile-pic': self.user.profile_pic
             }
         }
+    def to_dict_bookmarks(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'owner_review': self.owner_review,
+            'owner_rating': self.owner_rating,
+            'watching_on': self.watching_on,
+            'post_img': self.post_img,
+            'category': self.category,
+
+       }
 
 
 class Category(db.Model):
@@ -111,3 +128,11 @@ class Review(db.Model):
                 'profile-pic': self.user.profile_pic
             }
         }
+
+
+bookmarks = db.Table(
+    'bookmarks',
+    db.Model.metadata,
+    db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True ),
+    db.Column('post_id', db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), primary_key=True )
+)

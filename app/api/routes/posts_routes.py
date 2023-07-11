@@ -23,7 +23,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @posts.route("")
-@login_required
+# @login_required
 def all_posts():
 
     posts = Post.query.order_by(Post.created_at.desc()).all()
@@ -168,3 +168,29 @@ def create_review(id):
     if form.errors:
         print('errors =======================>', form.errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@posts.route("/<int:id>/bookmark", methods=['PUT'])
+@login_required
+def add_bookmark(id):
+    post = Post.query.get(id)
+    selected_user = User.query.get(current_user.id)
+
+    # selected_user.user_bookmarks.append(post)
+    post.post_bookmarks.append(selected_user)
+
+    db.session.commit()
+
+    return {'user': selected_user.to_dict()}
+
+@posts.route("/<int:id>/bookmark", methods=['DELETE'])
+@login_required
+def delete_bookmark(id):
+    post = Post.query.get(id)
+    selected_user = User.query.get(current_user.id)
+
+    # selected_user.user_bookmarks.remove(post)
+    post.post_bookmarks.remove(selected_user)
+
+    db.session.commit()
+
+    return {'user': selected_user.to_dict()}

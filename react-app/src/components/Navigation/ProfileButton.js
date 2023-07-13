@@ -52,7 +52,7 @@ function ProfileButton({ user }) {
           <div className="user-menu">
             <button className="logout-btn" onClick={() => {
               history.push(`/users/${user.id}`)
-              // closeMenu()
+              closeMenu()
             }}>{user.username}</button>
             {/* <li>{user.email}</li> */}
             <button className="logout-btn" onClick={() => {

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom.min"
 import { allPostsThunk } from "../../store/posts"
 import { allReviewsThunk } from "../../store/reviews"
 import OpenModalButton from "../OpenModalButton"
@@ -51,7 +51,8 @@ const ReviewPage = () => {
             <div className="review-post-recap">
                 <div className="rp-user-c">
 
-                        <span className="rp-user">{post?.user?.username}</span>
+                        {/* <span className="rp-user">{post?.user?.username}</span> */}
+                        <NavLink className='rp-user' to={`/users/${post?.user?.id}`}>{post.user.username}</NavLink>
                 </div>
             <h2 className="review-title">
                         {post?.title}

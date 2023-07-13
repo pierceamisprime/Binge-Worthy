@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .categories import seed_categories, undo_categories
 from .posts import seed_posts, undo_posts
 from .reviews import seed_reviews, undo_reviews
+from .follows import seed_follows, undo_follows
 
 from app.models.db import db, environment, SCHEMA
 
@@ -22,8 +23,10 @@ def seed():
         undo_reviews()
         undo_posts()
         undo_categories()
+        undo_follows()
         undo_users()
     seed_users()
+    seed_follows()
     seed_categories()
     seed_posts()
     seed_reviews()
@@ -36,5 +39,6 @@ def undo():
     undo_reviews()
     undo_posts()
     undo_categories()
+    undo_follows()
     undo_users()
     # Add other undo functions here

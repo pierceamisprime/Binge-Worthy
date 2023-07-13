@@ -56,6 +56,11 @@
     padding: 10px;
     padding-left: 10px;
 }
+
+.rp-user {
+    text-decoration: none;
+    color: gray;
+}
  .rp-w {
     font-size: 14px;
     color: gray;

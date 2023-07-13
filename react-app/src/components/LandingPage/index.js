@@ -48,6 +48,8 @@ const LandingPage = () => {
         }
       };
 
+      if (!posts) return null;
+
 
     return (
 
@@ -128,11 +130,13 @@ const LandingPage = () => {
                             {/* <span className="lp-user">{post.user.username}</span> */}
                             <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>
@@ -182,11 +186,13 @@ const LandingPage = () => {
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>
@@ -236,11 +242,13 @@ const LandingPage = () => {
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>
@@ -290,11 +298,13 @@ const LandingPage = () => {
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>
@@ -344,11 +354,13 @@ const LandingPage = () => {
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>
@@ -398,11 +410,13 @@ const LandingPage = () => {
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
-                            {isCurrentUser && (
+                            {isCurrentUser ? (
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    )}
+                                    ) :  <div className="like-button">
+                                    <BookmarkButton sessionUser={user} post={post} />
+                                  </div>}
                                     </div>
 
                         </div>

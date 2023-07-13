@@ -59,3 +59,20 @@
 .pp-form > label > input {
     padding: 20px;
 }
+
+.intro-house-button {
+   padding-left: 50px;
+}
+
+
+.intro-house-button>button {
+    padding: 5px;
+    border-style: none;
+    color:#557e71;
+    border-radius: 5px;
+    background-color: rgb(202, 200, 200);
+}
+
+.intro-house-button>button:hover {
+    background-color: rgb(75, 75, 75);
+}

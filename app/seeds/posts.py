@@ -1,4 +1,4 @@
-from app.models import db, Post, environment, SCHEMA
+from app.models import db, Post, environment, SCHEMA, User
 from sqlalchemy.sql import text
 from datetime import date
 from faker import Faker
@@ -7,23 +7,37 @@ from faker import Faker
 fake = Faker()
 
 def seed_posts():
+
+
+    user1 = User.query.get(1)
+    user2 = User.query.get(2)
+    user3 = User.query.get(3)
+    user4 = User.query.get(4)
+    user5 = User.query.get(5)
+    user6 = User.query.get(6)
+    user7 = User.query.get(7)
+    user8 = User.query.get(8)
+    user9 = User.query.get(9)
+    user10 = User.query.get(10)
+
+
     post1 = Post(
-        title='Bleach', owner_review='Amazing show!!! Top tier anime and my favorite of all.', owner_rating=9.1, watching_on='Hulu', post_img='https://upload.wikimedia.org/wikipedia/en/7/72/Bleachanime.png', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=1
+        title='Bleach', owner_review='Amazing show!!! Top tier anime and my favorite of all.', owner_rating=9.1, watching_on='Hulu', post_img='https://upload.wikimedia.org/wikipedia/en/7/72/Bleachanime.png', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=1, post_bookmarks = [user1, user3, user6, user8],
     )
     post2 = Post(
-        title='Game of Thrones', owner_review='Dragons, swords, and more...! Just dont watch season 8...', owner_rating=9.5, watching_on='Max', post_img='https://flxt.tmsimg.com/assets/p8553063_b_v13_ax.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=2
+        title='Game of Thrones', owner_review='Dragons, swords, and more...! Just dont watch season 8...', owner_rating=9.5, watching_on='Max', post_img='https://flxt.tmsimg.com/assets/p8553063_b_v13_ax.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=2, post_bookmarks = [user4, user3, user6, user8]
     )
     post3 = Post(
-        title='Lord of the Rings', owner_review='Best trilogy of all time!!! Spend more than your day watching these 3 glorius films', owner_rating=10, watching_on='Max', post_img='https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=3
+        title='Lord of the Rings', owner_review='Best trilogy of all time!!! Spend more than your day watching these 3 glorius films', owner_rating=10, watching_on='Max', post_img='https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=3, post_bookmarks = [user1, user3, user6, user8]
     )
     post4 = Post(
-        title='FAST X', owner_review='Its all about family! There cant possibly be another one coming out right?', owner_rating=8.1, watching_on='other', post_img='https://m.media-amazon.com/images/M/MV5BNzZmOTU1ZTEtYzVhNi00NzQxLWI5ZjAtNWNhNjEwY2E3YmZjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=4
+        title='FAST X', owner_review='Its all about family! There cant possibly be another one coming out right?', owner_rating=8.1, watching_on='other', post_img='https://m.media-amazon.com/images/M/MV5BNzZmOTU1ZTEtYzVhNi00NzQxLWI5ZjAtNWNhNjEwY2E3YmZjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=4, post_bookmarks = [user1, user3, user5, user10]
     )
     post5 = Post(
-        title='Vikings', owner_review='Super epic show! All hail Ragnar!!! Highly recommend watching', owner_rating=8.5, watching_on='Amazon', post_img='https://flxt.tmsimg.com/assets/p9155926_b_v10_au.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=5
+        title='Vikings', owner_review='Super epic show! All hail Ragnar!!! Highly recommend watching', owner_rating=8.5, watching_on='Amazon', post_img='https://flxt.tmsimg.com/assets/p9155926_b_v10_au.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=5, post_bookmarks = [user2, user3, user6, user8]
     )
     post6 = Post(
-        title='The Witcher', owner_review='Pretty good adaptation from the game. The score is awesome and the fight choreography is on point!', owner_rating=8.2, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p17580215_b_v13_ac.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=6
+        title='The Witcher', owner_review='Pretty good adaptation from the game. The score is awesome and the fight choreography is on point!', owner_rating=8.2, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p17580215_b_v13_ac.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=6, post_bookmarks = [user5, user7, user8]
     )
     post7 = Post(
         title='John Wick', owner_review='I counted atleast 100 headshots. Great score, action, and set design! Follow it up with 2, 3, and 4!', owner_rating=10, watching_on='Hulu', post_img='https://www.themoviedb.org/t/p/original/sxeZgvv6mLZeGQMK1rvK3hw2W07.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Action/Adventure', user_id=7
@@ -41,7 +55,7 @@ def seed_posts():
         title='Barry', owner_review='Bill Hader is hilarious in this! Instant binge.', owner_rating=9.2, watching_on='Max', post_img='https://m.media-amazon.com/images/I/41tZiLPG2uL._AC_UF894,1000_QL80_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Comedy', user_id=1
     )
     post12 = Post(
-        title='Black Mirror', owner_review='Unique stories, both interesting and frightening.', owner_rating=8.7, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p8952681_b_v13_an.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Horror', user_id=2
+        title='Black Mirror', owner_review='Unique stories, both interesting and frightening.', owner_rating=8.7, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p8952681_b_v13_an.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Horror', user_id=2, post_bookmarks = [user1, user3, user6, user8]
     )
     post13 = Post(
         title='SAW', owner_review='This movie will make your skin crawl!', owner_rating=8.8, watching_on='Paramount+', post_img='https://m.media-amazon.com/images/I/41UHy1yVLqL._AC_UF894,1000_QL80_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Horror', user_id=3
@@ -56,7 +70,7 @@ def seed_posts():
         title='Succession', owner_review='The writing, acting, and directing of this show is top tier!', owner_rating=9.7, watching_on='Max', post_img='https://flxt.tmsimg.com/assets/p15455205_b_v8_ab.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Drama', user_id=6
     )
     post17 = Post(
-        title='Black Bird', owner_review='Cant believe this is based on a true story! Amazing watch and phenomenal acting.', owner_rating=9.0, watching_on='AppleTv', post_img='https://m.media-amazon.com/images/M/MV5BZjI3NjcyN2UtMGNhZC00YTYxLWJmOTQtNWI1ZGJmNjA4ZjY5XkEyXkFqcGdeQXVyNjEwNTM2Mzc@._V1_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Drama', user_id=7
+        title='Black Bird', owner_review='Cant believe this is based on a true story! Amazing watch and phenomenal acting.', owner_rating=9.0, watching_on='AppleTv', post_img='https://m.media-amazon.com/images/M/MV5BZjI3NjcyN2UtMGNhZC00YTYxLWJmOTQtNWI1ZGJmNjA4ZjY5XkEyXkFqcGdeQXVyNjEwNTM2Mzc@._V1_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Drama', user_id=7, post_bookmarks = [user1, user3, user6, user8]
     )
     post18 = Post(
         title='Love & Death', owner_review='This show is an amazing watch. Great writing and story.', owner_rating=8.5, watching_on='Paramount+', post_img='https://flxt.tmsimg.com/assets/p24098551_b_h8_aa.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Drama', user_id=8
@@ -68,7 +82,7 @@ def seed_posts():
         title='Severance', owner_review='One of the best shows I have watched this year. Highly recommend.', owner_rating=10, watching_on='AppleTv', post_img='https://m.media-amazon.com/images/M/MV5BMjkwZjcwMGQtNDAzOC00YjJiLThiYTgtNWU3ZjRiZmY2YzEzXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_FMjpg_UX1000_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Drama', user_id=10
     )
     post21 = Post(
-        title='The 100', owner_review='Epic sci-fi show! Really interesting ideas.', owner_rating=8.2, watching_on='YoutubeTv', post_img='https://m.media-amazon.com/images/M/MV5BNjRiYTIzZmUtMTFkNS00ZTM0LWE4ODAtMDliMGE4NzM5ZjVlXkEyXkFqcGdeQXVyNDQ0MTYzMDA@._V1_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Science-fiction', user_id=1
+        title='The 100', owner_review='Epic sci-fi show! Really interesting ideas.', owner_rating=8.2, watching_on='YoutubeTv', post_img='https://m.media-amazon.com/images/M/MV5BNjRiYTIzZmUtMTFkNS00ZTM0LWE4ODAtMDliMGE4NzM5ZjVlXkEyXkFqcGdeQXVyNDQ0MTYzMDA@._V1_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Science-fiction', user_id=1, post_bookmarks = [user1, user3, user6, user8]
     )
     post22 = Post(
         title='Love Death + Robots', owner_review='Super cool animated sci-fi show!', owner_rating=9.2, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p16594930_b_h9_ai.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Science-fiction', user_id=2
@@ -95,7 +109,7 @@ def seed_posts():
         title='Naruto Shippuden', owner_review='If anything is binge worthy, its this.', owner_rating=10, watching_on='Other', post_img='https://m.media-amazon.com/images/M/MV5BZGFiMWFhNDAtMzUyZS00NmQ2LTljNDYtMmZjNTc5MDUxMzViXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=9
     )
     post30 = Post(
-        title='The Umbrella Academy', owner_review='This show is fun, entertaining, and funny! Highly recommend.', owner_rating=9.0, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p16091715_b_v10_ae.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=10
+        title='The Umbrella Academy', owner_review='This show is fun, entertaining, and funny! Highly recommend.', owner_rating=9.0, watching_on='Netflix', post_img='https://flxt.tmsimg.com/assets/p16091715_b_v10_ae.jpg', created_at=fake.date_between(start_date='-5y', end_date='today'), category='Fantasy', user_id=10, post_bookmarks = [user1, user3, user6, user8]
     )
 
     db.session.add(post1)

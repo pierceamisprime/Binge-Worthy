@@ -10,6 +10,7 @@ import WelcomePage from "./components/WelcomePage";
 import ReviewPage from "./components/ReviewPage";
 import ProfilePage from "./components/ProfilePage";
 import AboutMe from "./components/About";
+import BookMarksPage from "./components/BookMarksPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path='/about'>
             <AboutMe />
+          </Route>
+          <Route path='/bookmarks'>
+            <BookMarksPage />
           </Route>
           <Route path='/users/:userId'>
             <ProfilePage />

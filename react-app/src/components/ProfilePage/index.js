@@ -15,20 +15,101 @@ const ProfilePage = () => {
 
     const { userId } = useParams()
     const dispatch = useDispatch()
+    const userDetails = useSelector(state => state.session.user_details)
     const current_user = useSelector(state => state.session.user)
-    const user = useSelector(state => state.session.userProfile)
+    // const user = useSelector(state => state.session.userProfile)
 
 
     const posts = Object.values(useSelector(state => state.posts))
-    const userPosts = posts.filter(post => post.user?.id === user?.id)
+    // const userPosts = posts.filter(post => post.user?.id === user?.id)
 // console.log(userPosts)
+    const [postsChanged, setPostsChanged] = useState(false)
+    const [user, setUser] = useState({})
+
+    const userPosts = []
+
+    for (const post of posts) {
+        if (post.user.id === parseInt(userId)) {
+            userPosts.push(post)
+        }
+    }
+
+
+    useEffect(() => {
+        dispatch(allPostsThunk());
+        const timeout = setTimeout(() => {
+            async function data() {
+                const ress = await dispatch(getUserThunk(userId));
+                if (!ress) {
+                    // console.log("im  inside something")
+                    return <h1 style={{ color: "white" }}>LOADING....</h1>
+                }
+
+            }
+            data()
+        }, 500)
+        return (() => {
+            clearTimeout(timeout)
+        })
+
+    }, [dispatch, userId])
 
 
 
     useEffect(() => {
-        dispatch(getUserThunk(userId))
-        dispatch(allPostsThunk())
-    }, [dispatch])
+        dispatch(getUserThunk(current_user?.id));
+        setPostsChanged(false);
+    }, [dispatch, current_user?.id, postsChanged])
+
+
+    useEffect(() => {
+        async function fetchData() {
+            const res = await fetch('/api/users');
+            const data = await res.json();
+
+            const user_fetch = data[userId]
+
+            setUser(user_fetch)
+
+
+        }
+
+        fetchData();
+
+    }, [dispatch, userId])
+
+
+
+    const handleFollow = async (e) => {
+        const res = await fetch(`/api/users/${userId}/friends`, {
+            method: "POST"
+        });
+        await res.json();
+        setPostsChanged(true)
+    }
+
+
+    const handleUnfollow = async (e) => {
+        const res = await fetch(`/api/users/${userId}/friends`, {
+            method: "DELETE"
+        });
+        await res.json();
+        setPostsChanged(true)
+    }
+
+    if (!userDetails) return null;
+
+    if (!userDetails[userId]) return null;
+
+    if (!userDetails[current_user.id]) return null;
+
+    const visiting_profile_friends = Object.values(userDetails[userId]['is_following']);
+    const current_user_friends = Object.values(userDetails[current_user.id]['is_following']);
+
+    const friendId = []
+    for (const user of current_user_friends) {
+        friendId.push(user.id)
+    }
 
 
 
@@ -37,17 +118,30 @@ const ProfilePage = () => {
     return (
         <div>
         <div className="user-info">
+            {current_user.first_name == user.first_name ?
             <OpenModalButton
             buttonText={ <img className="profile-pic" src={user?.profile_pic ? user.profile_pic : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} />}
             modalComponent={<ProfilePicModal user={current_user} userId={userId}/>}
             />
+
+            : <img className="profile-pic" src={user?.profile_pic ? user.profile_pic : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} />
+        }
+
             {/* // <img className="profile-pic" src={user?.profile_pic ? user.profile_pic : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} /> */}
             <span className="pp-name">{user?.first_name} {user?.last_name} </span>
+            <div className='intro-house-button'>
+                            {!friendId.includes(parseInt(userId)) && current_user.id !== parseInt(userId) && (
+                                <button onClick={handleFollow}>Follow</button>
+                            )}
+                            {friendId.includes(parseInt(userId))  && current_user.id !== parseInt(userId) && (
+                                <button onClick={handleUnfollow}>Unfollow</button>
+                            )}
+                        </div>
 
             </div>
 
                 <div className="pp-posts-container">
-                    <h1>Your Binge Recommendations</h1>
+                    <h1>Binge Recommendations</h1>
 
         {userPosts.toReversed().map(post => {
             const isCurrentUser = post.user?.id === current_user?.id;

@@ -22,9 +22,9 @@ const editUser = (user) => ({
 	user
 })
 
-const getUser = (userId) => ({
+const getUser = (userDetail) => ({
 	type: GET_USER,
-	userId
+	userDetail
 })
 
 const allUsers = (users) => ({
@@ -214,7 +214,7 @@ export default function reducer(state = initialState, action) {
 			return newState
 		case GET_USER:
 			newState = { ...state }
-			newState.userProfile = { ...action.userId }
+			newState.user_details = { ...state.user_details, ...action.userDetail }
 			return newState
 		case EDIT_USER:
 			newState = { ...state }

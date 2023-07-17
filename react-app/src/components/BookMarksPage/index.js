@@ -29,8 +29,7 @@ const BookMarksPage = () => {
     const bookmarks = user.user_bookmarks
 
 
-    console.log('actionposts',user.user_bookmarks)
-    console.log('actionposts',posts)
+
 
 
 

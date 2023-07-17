@@ -20,7 +20,7 @@ const ReviewPage = () => {
     const userReviews = postsReviews.filter(review => user?.id === review.user.id)
     // const post = posts.filter()
 
-    // console.log('post========', postId)
+
 
     useEffect(() => {
         dispatch(allPostsThunk())
@@ -31,10 +31,7 @@ const ReviewPage = () => {
     postsReviews.forEach(review => {
         avgRating += review.rating
 
-        // console.log(avgRating)
-        // console.log(review.rating)
-        // console.log(avgRating)
-        // return avgRating
+
 
 
     });
@@ -43,7 +40,7 @@ const ReviewPage = () => {
 
    avgRating = avgRating / postsReviews.length
 
-//    console.log(avgRating)
+
 
 
     return (

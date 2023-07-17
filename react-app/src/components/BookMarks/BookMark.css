@@ -1,4 +1,4 @@
- .favorite-button button {
+ .bookmark-button button {
     border: none;
     background: none;
     outline: none;
@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 
- .favorite {
+ .bookmark {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,6 +22,6 @@
     margin-bottom: 6px;
 }
 
-.yellowFavorite {
+.yellowBookmark {
     color: rgb(235, 203, 76);
 }

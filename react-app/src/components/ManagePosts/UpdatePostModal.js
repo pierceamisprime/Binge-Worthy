@@ -10,8 +10,7 @@ const UpdatePostModal = ({ postId }) => {
     const { closeModal } = useModal()
     const categories = Object.values(useSelector(state => state.categories))
     const currentPost = useSelector(state => state.posts[postId])
-    // console.log('currentpost===========', currentPost)
-    // console.log('postid===========', postId)
+
 
     const [title, setTitle] = useState(currentPost?.title)
     const [ownerReview, setOwnerReview] = useState(currentPost?.owner_review)
@@ -22,7 +21,7 @@ const UpdatePostModal = ({ postId }) => {
     const [errors, setErrors] = useState([])
     const [submitted, setSubmitted] = useState('')
 
-    console.log(currentPost.post_img)
+
 
     useEffect(() => {
         const errors = {}
@@ -54,9 +53,7 @@ const UpdatePostModal = ({ postId }) => {
         formData.append('watching_on', watchingOn)
         formData.append('post_img', postImg)
         formData.append('category', category)
-        console.log('formData==============',formData)
-        console.log(category)
-        console.log(ownerReview)
+
 
         if (!Object.values(errors).length) {
             await dispatch(editPostThunk(postId, formData)).then(() => dispatch(allPostsThunk()))

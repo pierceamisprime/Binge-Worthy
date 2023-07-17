@@ -22,7 +22,7 @@ const ProfilePage = () => {
 
     const posts = Object.values(useSelector(state => state.posts))
     // const userPosts = posts.filter(post => post.user?.id === user?.id)
-// console.log(userPosts)
+
     const [postsChanged, setPostsChanged] = useState(false)
     const [user, setUser] = useState({})
 
@@ -41,7 +41,7 @@ const ProfilePage = () => {
             async function data() {
                 const ress = await dispatch(getUserThunk(userId));
                 if (!ress) {
-                    // console.log("im  inside something")
+
                     return <h1 style={{ color: "white" }}>LOADING....</h1>
                 }
 

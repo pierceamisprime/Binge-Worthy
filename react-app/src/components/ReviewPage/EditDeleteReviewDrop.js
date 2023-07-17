@@ -42,7 +42,7 @@ function EditDeleteReviewDrop({ user, reviewId, postId }) {
                 {user && (
                     <div className="edit-delete-post">
                         <div className="edit-drop">
-                            {console.log("I am in here")}
+
                             <OpenModalButton
                                 buttonText="Edit"
                                 modalComponent={<UpdateReviewModal reviewId={reviewId} postId={postId} />}

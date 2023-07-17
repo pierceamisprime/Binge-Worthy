@@ -56,7 +56,7 @@ export const createReviewThunk = (postId, review) => async (dispatch) => {
 };
 
 export const editReviewThunk = (reviewId, review) => async (dispatch) => {
-    console.log('thunk=====',reviewId)
+
     const response = await fetch(`/api/reviews/${reviewId}/update`, {
         method: 'PUT',
         body: review

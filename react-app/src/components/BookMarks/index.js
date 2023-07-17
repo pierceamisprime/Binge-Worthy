@@ -15,7 +15,7 @@ const BookmarkButton = ({ sessionUser, post }) => {
 
   if (sessionUser?.user_bookmarks) {
     for (let favorite of sessionUser?.user_bookmarks) {
-      if (favorite.id === post?.id) favoriteColor = "yellowFavorite";
+      if (favorite.id === post?.id) favoriteColor = "yellowBookmark";
     }
   }
 
@@ -38,21 +38,21 @@ const BookmarkButton = ({ sessionUser, post }) => {
   const closeMenu = () => setShowMenu(false);
 
   const handleFavorite = async () => {
-    if (favoriteColor === "yellowFavorite") {
+    if (favoriteColor === "yellowBookmark") {
      dispatch(deleteBookmarkThunk(post?.id));
       setfavoriteColor("");
     } else if (favoriteColor === "") {
      dispatch(addBookmarkThunk(post?.id));
-      setfavoriteColor("yellowFavorite");
+      setfavoriteColor("yellowBookmark");
     }
   };
 
   return (
-    <div className={`favorite-button ${favoriteColor}`}>
+    <div className={`bookmark-button ${favoriteColor}`}>
       {!sessionUser ? (
         <OpenModalButton
           buttonText={
-            <div className="favorite">
+            <div className="bookmark">
               <i
                 className={
                   favoriteColor ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"
@@ -66,9 +66,9 @@ const BookmarkButton = ({ sessionUser, post }) => {
       ) : (
         <button
           onClick={handleFavorite}
-          className={`favorite-button ${favoriteColor}`}
+          className={`bookmark-button ${favoriteColor}`}
         >
-          <div className="favorite">
+          <div className="bookmark">
             <i
               className={
                 favoriteColor

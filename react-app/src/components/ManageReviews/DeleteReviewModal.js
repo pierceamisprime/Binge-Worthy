@@ -8,7 +8,7 @@ function DeleteReviewModal({ reviewId }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
-    // console.log(reviewId)
+
 
 
     const deleteButton = async (e) => {

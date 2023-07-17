@@ -8,8 +8,7 @@ const UpdateReviewModal = ({ reviewId, postId }) => {
     const dispatch = useDispatch()
     const { closeModal } = useModal()
     const currentReview = useSelector(state => state.reviews[reviewId])
-    console.log(currentReview)
-    console.log(reviewId)
+
 
     const [review, setReview] = useState(currentReview?.review_body)
     const [rating, setRating] = useState(currentReview?.rating)
@@ -37,7 +36,7 @@ const UpdateReviewModal = ({ reviewId, postId }) => {
         formData.append('rating', rating)
 
         if (!Object.values(errors).length) {
-            console.log('hellooooo')
+
             await dispatch(editReviewThunk(reviewId, formData)).then(() => dispatch(allReviewsThunk()))
             closeModal()
         }

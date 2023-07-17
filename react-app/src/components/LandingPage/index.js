@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink, Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { allPostsThunk } from "../../store/posts"
 import CreateReviewModal from "../ReviewPage/CreateReview.Modal"
 import OpenModalButton from "../OpenModalButton"
@@ -26,7 +26,7 @@ const LandingPage = () => {
     const horrorPosts = posts.filter(post => post.category == 'Horror')
 
 
-    console.log('actionposts', actionPosts)
+
 
 
 
@@ -67,7 +67,7 @@ const LandingPage = () => {
             {posts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                             {/* <span className="lp-user">{post.user.username}</span> */}
                             <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
@@ -76,9 +76,9 @@ const LandingPage = () => {
                                     <EditDeleteDrop user={user} postId={post.id}
                                     />
 
-                                    ) :  <div className="like-button">
+                                    ) :  <Link className="like-button" to={`/posts`}>
                                     <BookmarkButton sessionUser={user} post={post} />
-                                  </div>}
+                                  </Link>}
                                     </div>
 
                         </div>
@@ -107,7 +107,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>
@@ -125,7 +125,7 @@ const LandingPage = () => {
             {actionPosts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                             {/* <span className="lp-user">{post.user.username}</span> */}
                             <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
@@ -165,7 +165,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>
@@ -182,7 +182,7 @@ const LandingPage = () => {
             {fantasyPosts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
@@ -221,7 +221,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>
@@ -238,7 +238,7 @@ const LandingPage = () => {
             {scienceFicttionPosts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
@@ -277,7 +277,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>
@@ -294,7 +294,7 @@ const LandingPage = () => {
             {dramaPosts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
@@ -333,7 +333,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>
@@ -350,7 +350,7 @@ const LandingPage = () => {
             {comedyPosts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
@@ -389,7 +389,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>
@@ -406,7 +406,7 @@ const LandingPage = () => {
             {horrorPosts.toReversed().map(post => {
                 const isCurrentUser = post.user.id === user.id;
                 return (
-                    <div className="lp-post" key={post.id}>
+                    <Link className="lp-post" to={`/posts/${post.id}/reviews`} key={post.id} >
                          <div className="manage-buttons">
                          <NavLink className='lp-user' to={`/users/${post.user.id}`}>{post.user.username}</NavLink>
                             <div className="edit-dl-drop">
@@ -445,7 +445,7 @@ const LandingPage = () => {
                         <div className="lp-other-reviews">
                             <NavLink className='lp-other-reviews-link' to={`/posts/${post.id}/reviews`} style={{ textDecoration: 'none' }}>Other Reviews</NavLink>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
           </Carousel>

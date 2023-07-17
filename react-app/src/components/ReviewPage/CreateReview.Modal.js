@@ -35,7 +35,7 @@ const CreateReviewModal = ({postId}) => {
         formData.append('rating', rating)
 
         if (!Object.values(errors).length) {
-            console.log('hellooooo')
+
             await dispatch(createReviewThunk(postId, formData))
             closeModal()
         }

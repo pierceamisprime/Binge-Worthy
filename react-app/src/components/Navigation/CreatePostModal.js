@@ -49,9 +49,7 @@ const CreatePostModal = () => {
         formData.append('watching_on', watchingOn)
         formData.append('post_img', postImg)
         formData.append('category', category)
-        // console.log('formData==============',formData)
-        // console.log(category)
-        // console.log(ownerReview)
+
 
         if (!Object.values(errors).length) {
            await dispatch(createPostThunk(formData)).then(() => allPostsThunk())

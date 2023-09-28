@@ -59,7 +59,7 @@ const BookMarksPage = () => {
         <div className="lp-posts-container">
             <div className="lp-category">
 
-<h2>Bookmarks</h2>
+<h2>Watch List</h2>
             </div>
 
 

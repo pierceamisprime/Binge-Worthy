@@ -26,6 +26,8 @@ const UpdatePostModal = ({ postId }) => {
     useEffect(() => {
         const errors = {}
 
+        //Validation Errors
+
         if (!title) errors.title = "Please provide title"
         if (title.length > 30) errors.title = "Title must be between 1-30 characters"
         if (!ownerReview) errors.ownerReview = "Please provide Review"
@@ -60,13 +62,6 @@ const UpdatePostModal = ({ postId }) => {
             closeModal()
         }
 
-        // if (data.errors) {
-        //     return setErrors(data.errors[0])
-        // }
-
-        // if (submitted && errors) {
-        //     setErrors('')
-        // }
 
     }
 
